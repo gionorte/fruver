@@ -1,0 +1,91 @@
+body{
+    border-radius: 1px;
+    border-color: #f30505;
+    border-style: solid;
+    background-image: url('/img/logo_inzufrut.jpg');
+    margin: 0;
+    padding: 0;
+
+
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #131312;
+    border-color: #f30505;
+    border-radius: 1px;
+    border-style: solid;
+    border-width: 2px;
+}
+    .mdl-textfield {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    
+    .mdl-textfield input:focus ~ label,
+    .mdl-textfield input:not(:placeholder-shown) ~ label {
+        top: -20px;
+        font-size: 20px;
+        color: #000000;
+    }
+    
+    .mdl-textfield label {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        transition: top 0.3s, font-size 0.3s, color 0.3s;
+    }
+    
+    .mdl-textfield input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid #fc0404;
+        font-size: 16px;
+        transition: border-bottom 0.3s;
+    }
+    
+    .mdl-textfield input:focus {
+        border-bottom: 2px solid #ff0000;
+        outline: none;
+    }
+    .container-login {
+        max-width: 300px;
+        margin: 400px auto 0; /* Esto centra el elemento horizontalmente */
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 100px;
+        border-style: solid;
+        border-color: #fc0404;
+    }
+    .text-center{
+        text-align: center;
+        font-size: 26px;
+    }
+    .mdl-button {
+        display: block; /* Cambia el botón a un bloque para centrarlo horizontalmente */
+        margin: 20px auto 0; /* Margen superior para separarlo del campo de contraseña y centrarlo horizontalmente */
+        width: 100px; /* Ancho del botón */
+        border: 2px solid #ff0000; /* Añade un borde de 2px sólido con color azul */
+        background-color:#0c0c0c; /* Fondo transparente */
+        color: #f80505; /* Color de texto azul */
+        border-radius: 5px; /* Borde redondeado */
+        padding: 10px; /* Espaciado interno */
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s; /* Transición suave */
+        
+    }
+    
+    .mdl-button:hover {
+        background-color: #f5b42a; /* Cambia el color de fondo al pasar el cursor */
+        color: #fff; /* Cambia el color del texto al pasar el cursor */
+    }
+    .container-login img {
+        display: block;
+        margin: 0 auto; /* Centra la imagen horizontalmente */
+        width: 80px; /* Tamaño deseado para la imagen */
+        height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
+    }

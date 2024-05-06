@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+}
+.sidebar {
+flex: 1;
+padding: 20px;
+background-color: #0e0d0d;
+color: #fff;
+height: 100vh; /* Esto ajusta la altura al 100% del viewport */
+overflow-y: auto; /* Esto añade un scroll si el contenido excede la altura */
+border-radius: 2px;
+border-style: solid;
+border-color: #fa0505;
+}
+
+.main-content {
+    flex: 3;
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+}
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #0c0c0c;
+    color: #fa0505;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-color:red;
+    border-style: solid;
+}
+
+.btn:hover {
+    background-color: #f7c53e;
+}
+img {
+width: 80px; /* Ajusta el tamaño de la imagen */
+margin: 20px auto; /* Centra la imagen horizontalmente y agrega un margen superior e inferior */
+display: block; /* Convierte la imagen en un elemento de bloque para aplicar márgenes automáticamente */
+}

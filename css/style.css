@@ -1,0 +1,254 @@
+        /* Estilos CSS aquí */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            border-color: #f30505;
+    border-radius: 1px;
+    border-style: solid;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f3f3f3;
+        }
+    
+        .contact-info {
+            text-align: center; /* Centrando la información de contacto */
+        }
+        .contact-info a {
+            color: #f50505;
+            text-decoration: none;
+        }
+        .carousel {
+            max-width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            background-color: #f80707;
+            padding: 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center; /* Centrando el menú */
+            margin-top: 20px; /* Espacio entre el menú y el carrusel */
+        }
+        nav li {
+            margin: 0 10px; /* Espacio entre los elementos del menú */
+            list-style-type: none;
+        }
+        .mobile-nav-toggle {
+            display: none; /* Ocultar el icono de menú en dispositivos móviles */
+        }
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: inline-block; /* Mostrar el icono de menú en dispositivos móviles */
+            }
+            .navbar {
+                display: none; /* Ocultar el menú en dispositivos móviles */
+            }
+            .navbar.active {
+                display: flex; /* Mostrar el menú cuando está activo en dispositivos móviles */
+                flex-direction: column;
+            }
+        }/* Estilos CSS aquí */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #131312;
+    border-color: #f30505;
+    border-radius: 1px;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.logo {
+    max-width: 30px; /* Tamaño del logo más pequeño *
+
+}
+
+.contact-info {
+    text-align: center; /* Centrando la información de contacto */
+}
+
+.contact-info a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.carousel {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.carousel img.active {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    background-color: #0a0a0a;
+    padding: 20px;
+    color: #f50505;
+    border-color: #f30505;
+    border-radius: 1px;
+    border-style: solid;
+    border-width: 3px;
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* Centrando el menú */
+    margin-top: 20px; /* Espacio entre el menú y el carrusel */
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav li {
+    margin: 0 10px; /* Espacio entre los elementos del menú */
+}
+
+nav a {
+    text-decoration: none;
+    color: #f70303;
+}
+
+.mobile-nav-toggle {
+    display: none; /* Ocultar el icono de menú en dispositivos móviles */
+}
+
+
+
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: inline-block; /* Mostrar el icono de menú en dispositivos móviles */
+    }
+    nav ul {
+        display: none; /* Ocultar el menú en dispositivos móviles */
+    }
+    nav.active ul {
+        display: flex; /* Mostrar el menú cuando está activo en dispositivos móviles */
+        flex-direction: column;
+        align-items: center;
+    }
+}
+      /* Estilos para la sección de productos */
+section {
+    margin: 20px;
+}
+
+/* Estilos para cada producto */
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#f3f3f3;
+        }
+        h2 {
+            color: #000000;}
+        section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .product {
+            display: inline-block;
+            vertical-align: top;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #f30505;
+            border-radius: 10px;
+            background-color: #080808;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #f80202;
+        }
+        h3 {
+            color: #fa0505;
+        }
+        p {
+            color: #ff5454;
+        }
+        strong {
+            color: #fc0606;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #080808;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #2e2d2d;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .btn-get-started {
+            display: inline-block;
+            background-color: #050505;
+            border: #f70707;
+            color: #f70707;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-get-started:hover {
+            background-color: #dda305;
+            
+        }
+        .contact-info h2 {
+    margin-right: 10px; /* Ajusta este valor según sea necesario */
+}
+.eri {
+    color: rgb(255, 0, 0); /* Cambia "blue" por el color que desees */
+}
