@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inzufrut</title>
+    <title>Inzufrut - Acceso</title>
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="css/iniciose.css">
+    <script>
+        function validarFormulario() {
+            var correo = document.getElementById('correo').value;
+            var contrasena = document.getElementById('contrasena').value;
+            
+            // Comprobar si los campos están vacíos
+            if (correo.trim() === '' || contrasena.trim() === '') {
+                alert('Por favor, complete todos los campos.');
+                return false; // Evitar el envío del formulario
+            }
+        }
+    </script>
     <script>
         history.pushState(null, null, document.URL);
         window.addEventListener('popstate', function () {
@@ -14,39 +26,18 @@
     </script>
 </head>
 <body>
-    <div class="overlay"></div> <!-- Esta es la superposición semitransparente -->
-    <header>
+<header>
         <div class="logo">
-            <h1 class="logo"><a href="index.html"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
+            <h1 class="logo"><a href="index.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
         </div>
     </header>
-    <div class="login-wrap cover">
-        <div class="container-login">
-            <img src="img/iconus.png" alt="icon">
-            <p class="text-center">
-                <i class="zmdi zmdi-account-circle"></i>
-            </p>
-            <p class="text-center text-condensedLight">Ingresa con tu cuenta</p>
-            <form action="" method="POST">
-                <br>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" name="correo" type="text" id="correo">
-                    <label class="mdl-textfield__label" for="correo">Correo</label>
-                </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input-" name="contrasena" type="password" id="pass">
-                    <label class="mdl-textfield__label" for="pass">Contraseña</label>
-                </div>
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                    <i class="fas fa-sign-in-alt"></i> INGRESAR
-                </button>
-            </form>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
+    <h2>Ingresa con tu cuenta</h2>
+    <form method="post" action="procesar_login.php" onsubmit="return validarFormulario()">
+        Correo electrónico: <input type="text" name="correo" id="correo"><br>
+        Contraseña: <input type="password" name="contrasena" id="contrasena"><br>
+        <input type="submit" value="Iniciar sesión">
+    
+        <a href="registrar.php">Registrate</a>
+    </form>
 </body>
 </html>
-

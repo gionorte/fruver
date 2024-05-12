@@ -41,7 +41,7 @@
         <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
             <h1>BIENVENIDO A INZUFRUT</h1>
             <h2>Si eres parte de ésta familia inicia sesion</h2>
-            <a href="iniciosesion.html" class="btn-get-started scrollto">INCIAR SESION</a>
+            <a href="iniciosesion.php" class="btn-get-started scrollto">INCIAR SESION</a>
           </div>
     </section>
 
