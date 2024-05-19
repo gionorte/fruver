@@ -5,25 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut</title>
     <link href="img/icono.png" rel="icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Agregando los iconos de Bootstrap -->
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/inter.css">
 </head>
 <body>
+    <main id="hero">
     <header>
         <div class="logo">
-            <h1 class="logo"><a href="index.html"><img src=img/icono.png alt="icon" style="width: 60px;"></a></h1>
-            
+            <h1 class="logo"><a href="inter-inicio.php"><img src=img/icono.png alt="icon" style="width: 60px;"></a></h1>      
         </div>
         <h2 class="eri">INZUFRUT</h2>
         <div class="contact-info d-flex align-items-center">
             
-            <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">inzufrt@gmail.com</a>
+            <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">inzufruts.a.s@outlook.es</a>
             <i class="bi bi-phone-fill phone-icon"></i> <a href=""> +57 320 778 5187 </a>
         </div>
         <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
         <nav id="navbar" class="navbar">
             <ul >
-                <li><a class="btn-get-started scrollto" href="index.html" >Inicio</a></li>
+                <li><a class="btn-get-started scrollto" href="inter-inicio.php" >Inicio</a></li>
                 <li><a class="btn-get-started scrollto" href="#">Productos</a></li>
                 <li><a class="btn-get-started scrollto" href="#">contactanos</a></li>
                 <li><a class="btn-get-started scrollto" href="#">Registrate</a></li>
@@ -31,11 +30,10 @@
         </nav>
     </header>
 
-    <div class="carousel">
-        <img class="active" src="img/logo_inzufrut.jpg" alt="Fruta 1">
-        <img src="img/mango.jpeg" alt="Fruta 2">
-        <img src="img/naranj.jpg" alt="Fruta 3">
-    </div>
+    <video autoplay muted loop>
+            <source src="videos/inicio.mp4" type="video/mp4">
+        </video>
+        <div class="capa"></div>
 
     <section>
         <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
@@ -44,8 +42,8 @@
             <a href="iniciosesion.php" class="btn-get-started scrollto">INCIAR SESION</a>
           </div>
     </section>
-
-    <section>
+    </main>
+    <section class="produc-vista">
         <h2>Nuestros productos</h2>
         <div class="product">
             <img src="img/manzana.jpg" alt="Manzana">
@@ -69,9 +67,21 @@
     
 
     <footer>
-        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>
-        <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
-    </footer>
+    <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>
+    <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
+    <div class="social-icons">
+        <a href="" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
+        <a href="" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
+        <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
+        <a href="" target="_blank"><img src="img/youtube.png" alt="YouTube"></a>
+    </div>
+
+    <div class="logo-ft">
+            <h1 class="logo"><a href="inter-inicio.php"><img src=img/icono.png alt="icon" style="width: 60px;"></a></h1>      
+        </div>
+
+</footer>
+
 
     <script>
         // JavaScript para el carrusel de imágenes
