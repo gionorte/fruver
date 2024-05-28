@@ -6,6 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+<script>
+    // Evitar que el usuario navegue hacia atrás
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+    window.onpopstate = function() {
+        window.history.go(1);
+    };
+</script>
 </body>
 </html>

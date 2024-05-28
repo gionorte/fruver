@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut</title>
-    <link href="img/icono.png" rel="icon">
-    <link rel="stylesheet" href="css/inter.css">
+    <link href="img/icon-p.png" rel="icon">
+    <link rel="stylesheet" href="css/inter-in.css">
 </head>
 <body>
     <main id="hero">
@@ -24,14 +24,14 @@
             <ul >
                 <li><a class="btn-get-started scrollto" href="inter-inicio.php" >Inicio</a></li>
                 <li><a class="btn-get-started scrollto" href="#">Productos</a></li>
-                <li><a class="btn-get-started scrollto" href="#">contactanos</a></li>
-                <li><a class="btn-get-started scrollto" href="#">Registrate</a></li>
+                <li><a class="btn-get-started scrollto" href="contactanos.php">contactanos</a></li>
+                <li><a class="btn-get-started scrollto" href="registrar.php">Registrate</a></li>
             </ul>
         </nav>
     </header>
 
     <video autoplay muted loop>
-            <source src="videos/inicio.mp4" type="video/mp4">
+            <source src="videos/ini-inter.mp4" type="video/mp4">
         </video>
         <div class="capa"></div>
 

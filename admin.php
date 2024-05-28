@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['Id_Cargo'])) {
+    header("Location: iniciosesion.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,55 +12,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut</title>
     <link href="img/icono.png" rel="icon">
-    <link rel="stylesheet" href="css/admin.css">
-    <!-- Agregar enlace al icono de cerrar sesión -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        /* Estilos para el botón de cerrar sesión */
-        .logout-btn {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .logout-btn:hover {
-            background-color: #d32f2f;
-        }
-    </style>
+    <link rel="stylesheet" href="css/admin-e.css">
 </head>
 <body>
-    <div class="sidebar">
-        <img src="img/iconus.png" alt="icon">
-        <br>
-        <br>
-        <h2>Erik Armando Pabon Tovar</h2>
-        <br>
-        <button class="btn" onclick="window.location.href='registrar_empleado.html'">Registrar Empleado</button>
-        <button class="btn" onclick="window.location.href='registrar_producto.html'">Registrar Producto</button>
-        <button class="btn" onclick="window.location.href='ver_orden_compra.html'">Ver Orden de Compra</button>
-        <button class="btn" onclick="window.location.href='lista_productos.html'">Lista de Productos</button>
-        <button class="btn" onclick="window.location.href='lista_empleados.html'">Lista de Empleados</button>
-        <button class="btn" onclick="window.location.href='asignar_tarea.php'">Asignar Tarea</button>
-        <!-- Botón de cerrar sesión -->
-        <button class="logout-btn" onclick="window.location.href='index.php'">
-            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-        </button>
-    </div>
-    <div class="main-content">
-        <!-- Aquí puedes agregar más contenido HTML si es necesario -->
-    </div>
+    <main id="hero">
+        <header>
+            <div class="logo">
+                <h1 class="logo"><a href="admin.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a></h1>
+            </div>
+            <div class="cerrar">
+                <h1 class="logo"><a href="cerrar_sesion.php"><img src="img/cerrar-sesion.png" alt="icono" style="width: 30px;"></a></h1>
+            </div>
+        </header>
 
-    <!-- Script para cerrar sesión (debe ser implementado en tu backend) -->
+        <div class="background-img"></div> <!-- La imagen de fondo se aplicará como un div de fondo absoluto -->
+        
+        <div class="sidebar">
+            <img src="img/icon-in.png" alt="icon">
+            <h2>Erik Armando Pabon Tovar</h2>
+            <button class="btn" onclick="window.location.href='registrar.php'">Registrar Empleado</button>
+            <button class="btn" onclick="window.location.href='regis-producto.php'">Registrar Producto</button>
+            <button class="btn" onclick="window.location.href=''">Ver Orden de Compra</button>
+            <button class="btn" onclick="window.location.href='lista-produc.php'">Lista de Productos</button>
+            <button class="btn" onclick="window.location.href='lista-empleados.php'">Lista de Empleados</button>
+            <button class="btn" onclick="window.location.href=''">Asignar Tarea</button>
+        </div>
+    </main>
     <script>
-        function cerrarSesion() {
-            // Aquí colocarías la lógica para cerrar la sesión del usuario
-            // Por ejemplo, podrías hacer una solicitud al servidor para cerrar la sesión
-            // y luego redirigir al usuario a la página de inicio de sesión o a otra página relevante.
-            alert("¡Sesión cerrada!");
-        }
-    </script>
+    // Evitar que el usuario navegue hacia atrás
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+    window.onpopstate = function() {
+        window.history.go(1);
+    };
+</script>
+
 </body>
 </html>
+
+
