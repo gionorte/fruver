@@ -23,7 +23,10 @@
                 <input type="email" name="correo" id="correo"  autofocus><br>
                 <label for="contrasena">Contraseña</label><br>
                 <input type="password" name="contrasena" id="contrasena" ><br>
+                <a href="">Olvidaste la Contraseña</a>
+                <br>
                 <button type="submit">Ingresar</button>
+
             </form>
         </div>
         <video autoplay muted loop>

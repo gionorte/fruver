@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inzufrut - Registro</title>
+    <link rel="stylesheet" href="css/regis_per.css">
+    <link href="img/icono.png" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <main id="hero">
+        <div class="capa"></div>
+        <header>
+            <div class="logo">
+                <h1><a href="inter-inicio.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a></h1>
+            </div>
+        </header>
+        <div class="form-container inicio">
+            <h2>Registro de Cliente</h2>
+            <div id="notificacion" style="display: none;">Registro exitoso</div>
+            <form action="procesar_regis_clien.php" method="post">
+                <div class="form-group">
+                    <label for="num_doc">Número de Documento: *</label>
+                    <input type="text" id="num_doc" name="num_doc" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo_doc">Tipo de Documento: *</label>
+                    <select id="tipo_doc" name="tipo_doc" required>
+                        <?php
+                        include("conexion.php");
+                        $sql_tipo_documento = "SELECT * FROM tipo_documento";
+                        $result_tipo_documento = $conn->query($sql_tipo_documento);
+                        while($row_tipo_doc = $result_tipo_documento->fetch_assoc()) {
+                            echo "<option value='" . $row_tipo_doc['Tipo_Doc'] . "'>" . $row_tipo_doc['Tipo_Doc'] . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="prim_nombre">Primer Nombre: *</label>
+                    <input type="text" id="prim_nombre" name="prim_nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="seg_nombre">Segundo Nombre:</label>
+                    <input type="text" id="seg_nombre" name="seg_nombre">
+                </div>
+                <div class="form-group">
+                    <label for="prim_apellido">Primer Apellido: *</label>
+                    <input type="text" id="prim_apellido" name="prim_apellido" required>
+                </div>
+                <div class="form-group">
+                    <label for="seg_apellido">Segundo Apellido:</label>
+                    <input type="text" id="seg_apellido" name="seg_apellido">
+                </div>
+                <div class="form-group">
+                    <label for="genero">Género:</label>
+                    <select id="genero" name="genero" required>
+                        <?php
+                        $sql_genero = "SELECT * FROM genero";
+                        $result_genero = $conn->query($sql_genero);
+                        while($row_genero = $result_genero->fetch_assoc()) {
+                            echo "<option value='" . $row_genero['Genero'] . "'>" . $row_genero['Genero'] . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono: *</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico: *</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group password-container">
+                    <label for="contrasena">Contraseña: *</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                    <i class="fa fa-eye eye-icon" id="eye-icon"></i>
+                </div>
+                <input type="hidden" id="id_cargo" name="id_cargo" value="3">
+                <input type="submit" value="Registrar">
+            </form><br>
+            <button onclick="window.location.href='inter-inicio.php'" class="btn-volver">Volver</button>
+        </div>
+    </main>
+    <script src="js/validacion-res-per.js"></script>
+    <script src="js/registro_exitoso.js"></script>
+</body>
+</html>

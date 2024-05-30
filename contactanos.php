@@ -133,34 +133,71 @@
             </div>
 
             <div class="row" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
-                </div>
+    <div class="col-lg-6">
+        <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.6125888371794!2d-74.06364468488778!3d4.65017564344815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a27b0b3243%3A0xd9828c4c484b3f0d!2sKr%2013%20%2365-10%2C%20Bogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sus!4v1620248952013!5m2!1ses!2sus" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+    </div>
+</div>
 
-                <div class="col-lg-6">
-                    <form action="procesar_contacto.php" method="post" role="form" class="php-email-form">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="Nombre" placeholder="Tu Nombre" required>
-                            </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" name="email" id="Email" placeholder="Tu Email" required>
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="subject" id="Subject" placeholder="Sujeto" required>
-                        </div>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
-                        </div>
-                        <div class="my-3">
-                            <div class="loading">Cargando</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Tu mensaje ha sido enviado. ¡Gracias!</div>
-                        </div>
-                        <div class="text-center"><button type="submit">Enviar mensaje</button></div>
-                    </form>
-                </div>
+
+
+<div class="col-lg-6">
+    <form action="procesar_contacto.php" method="post" role="form" class="php-email-form" id="contactForm">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="Nombre" placeholder="Tu Nombre" required>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="Email" placeholder="Tu Email" required>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="Subject" placeholder="Sujeto" required>
+        </div>
+        <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+        </div>
+        <div class="my-3">
+            <div class="loading" style="display: none;">Cargando</div>
+            <div class="error-message" style="display: none;"></div>
+            <div class="sent-message" style="display: none;">Tu mensaje ha sido enviado. ¡Gracias!</div>
+        </div>
+        <div class="text-center"><button type="submit">Enviar mensaje</button></div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+
+        $('.loading').show();
+        $('.error-message').hide();
+        $('.sent-message').hide();
+
+        $.ajax({
+            url: 'procesar_contacto.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(response) {
+                $('.loading').hide();
+                if (response.status === 'success') {
+                    $('.sent-message').text(response.message).show();
+                    $('#contactForm')[0].reset();
+                } else {
+                    $('.error-message').text(response.message).show();
+                }
+            },
+            error: function() {
+                $('.loading').hide();
+                $('.error-message').text('No se pudo enviar el mensaje. Inténtalo de nuevo más tarde.').show();
+            }
+        });
+    });
+});
+</script>
+
 
             </div>
 
