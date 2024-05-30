@@ -67,6 +67,25 @@
         .navbar ul li {
             margin-left: 20px;
         }
+        .profile-container {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            display: none;
+        }
+        .profile-icon {
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 20px; /* Ajusta el margen según sea necesario */
+        }
+        .profile-icon img {
+            width: 40px;
+        }
     </style>
 </head>
 <body>
@@ -91,6 +110,9 @@
                 <div class="cart-icon" onclick="toggleCart()">
                     <img src="img/cart.png" alt="Cart Icon">
                     <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <div class="profile-icon" onclick="toggleProfile()">
+                    <img src="img/usuario.png" alt="Profile Icon">
                 </div>
             </nav>
         </header>
@@ -141,6 +163,14 @@
         <button onclick="clearCart()">Vaciar Carrito</button>
     </div>
 
+  <div class="profile-container" id="profile-container">
+        <h2>Perfil del Cliente</h2>
+        <div id="profile-data">
+            <!-- Datos del cliente se insertarán aquí -->
+        </div>
+        <button onclick="editProfile()">Editar Perfil</button>
+    </div>
+
     <footer>
         <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>
         <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
@@ -155,6 +185,34 @@
         </div>
         <p class="show-cart" onclick="toggleCart()">Ver Carrito</p>
     </footer>
+    <script>
+        async function fetchProfileData() {
+            try {
+                const response = await fetch('get_cliente.php');
+                const data = await response.json();
+                if (data.error) {
+                    document.getElementById('profile-data').innerHTML = `<p>${data.error}</p>`;
+                } else {
+                    document.getElementById('profile-data').innerHTML = `
+                        <p><strong>Número de Documento:</strong> ${data.Num_Doc}</p>
+                        <p><strong>Tipo de Documento:</strong> ${data.Tipo_Doc}</p>
+                        <p><strong>Primer Nombre:</strong> ${data.Prim_Nombre}</p>
+                        <p><strong>Segundo Nombre:</strong> ${data.Seg_Nombre}</p>
+                        <p><strong>Primer Apellido:</strong> ${data.Prim_Apellido}</p>
+                        <p><strong>Segundo Apellido:</strong> ${data.Seg_Apellido}</p>
+                        <p><strong>Género:</strong> ${data.Genero}</p>
+                        <p><strong>Teléfono:</strong> ${data.Telefono}</p>
+                        <p><strong>Correo:</strong> ${data.Correo}</p>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+            }
+        }
+
+        // Llama a la función para obtener los datos del cliente cuando la página se carga
+        window.onload = fetchProfileData;
+    </script>
 
     <script>
         let cart = [];
@@ -207,6 +265,15 @@
         function toggleCart() {
             const cartContainer = document.getElementById('cart-container');
             cartContainer.style.display = cartContainer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleProfile() {
+            const profileContainer = document.getElementById('profile-container');
+            profileContainer.style.display = profileContainer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function editProfile() {
+            alert('Función para editar perfil no implementada.');
         }
 
         document.querySelectorAll('.add-to-cart').forEach(button => {
