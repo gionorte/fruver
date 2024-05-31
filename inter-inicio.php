@@ -131,8 +131,10 @@
         </section>
     </main>
 
+    <h2 class="titulo">Nuestros productos</h2>    
+
     <section class="produc-vista">
-        <h2>Nuestros productos</h2>
+        
         <div class="product">
             <img src="img/manzana.jpg" alt="Manzana">
             <h3>Manzana</h3>

@@ -96,19 +96,30 @@ header {
     background-color: #ff8c00;
 }
 
-.produc-vista {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.produc-vista h2 {
+.titulo {
     font-size: 36px;
     margin-bottom: 40px;
     color: #050505; /* Color del título */
+    text-align: center;
+}
+
+.produc-vista {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* This will add space between the items */
+}
+@media (max-width: 600px) {
+    .produc-vista {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;        
+    }
 }
 
 .product {
     display: inline-block;
+    text-align: center;
     vertical-align: top;
     margin: 20px;
     padding: 20px;
@@ -120,7 +131,7 @@ header {
 }
 
 .product img {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
     border-radius: 5px;
 }
