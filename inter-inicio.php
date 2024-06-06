@@ -1,103 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut</title>
     <link href="img/icon-p.png" rel="icon">
     <link rel="stylesheet" href="css/inter-in.css">
-    <style>
-        .cart-container {
-            position: fixed;
-            top: 50px;
-            right: 20px;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 300px;
-            display: none;
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        .cart-item button {
-            background: orange;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .cart-total {
-            font-weight: bold;
-        }
-        .show-cart {
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
-        }
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-            display: inline-block;
-            margin-left: 20px; /* Adjust the margin as needed */
-        }
-        .cart-icon img {
-            width: 40px;
-        }
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: orange;
-            color: white;
-            border-radius: 50%;
-            padding: 5px;
-            font-size: 12px;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .navbar ul {
-            display: flex;
-            list-style: none;
-        }
-        .navbar ul li {
-            margin-left: 20px;
-        }
-        .profile-container {
-            position: fixed;
-            top: 50px;
-            right: 20px;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 300px;
-            display: none;
-        }
-        .profile-icon {
-            position: relative;
-            cursor: pointer;
-            display: inline-block;
-            margin-left: 20px; /* Ajusta el margen según sea necesario */
-        }
-        .profile-icon img {
-            width: 40px;
-        }
-    </style>
+
 </head>
+
 <body>
     <main id="hero">
         <header>
-            <div class="logo">
-                <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
-            </div>
-            <h2 class="eri">INZUFRUT</h2>
-            <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">inzufruts.a.s@outlook.es</a>
-                <i class="bi bi-phone-fill phone-icon"></i> <a href=""> +57 320 778 5187 </a>
+            <div class="header-container">
+                <div class="logo">
+                    <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
+                </div>
+                <h2 class="eri">INZUFRUT</h2>                
             </div>
             <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
             <nav id="navbar" class="navbar">
@@ -115,12 +35,12 @@
                     <img src="img/usuario.png" alt="Profile Icon">
                 </div>
             </nav>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
         </header>
 
         <video autoplay muted loop>
             <source src="videos/ini-inter.mp4" type="video/mp4">
-        </video>
-        <div class="capa"></div>
+        </video>        
 
         <section>
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
@@ -131,8 +51,10 @@
         </section>
     </main>
 
+    <h2 class="titulo">Nuestros productos</h2>
+
     <section class="produc-vista">
-        <h2>Nuestros productos</h2>
+
         <div class="product">
             <img src="img/manzana.jpg" alt="Manzana">
             <h3>Manzana</h3>
@@ -163,7 +85,7 @@
         <button onclick="clearCart()">Vaciar Carrito</button>
     </div>
 
-  <div class="profile-container" id="profile-container">
+    <div class="profile-container" id="profile-container">
         <h2>Perfil del Cliente</h2>
         <div id="profile-data">
             <!-- Datos del cliente se insertarán aquí -->
@@ -172,20 +94,41 @@
     </div>
 
     <footer>
-        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>
-        <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
+        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>        
+        <a href="mailto:inzufruts.a.s@outlook.es">inzufruts.a.s@outlook.es <style> </style></a>
+        <p>Tel: +57 320 778 5187</p>
         <div class="social-icons">
             <a href="" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
             <a href="" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
-            <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
-            <a href="" target="_blank"><img src="img/youtube.png" alt="YouTube"></a>
+            <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>            
         </div>
         <div class="logo-ft">
             <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
         </div>
-        <p class="show-cart" onclick="toggleCart()">Ver Carrito</p>
+        <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
     </footer>
     <script>
+        function toggleMenu() {
+            var navbar = document.getElementById('navbar');
+            var ul = navbar.getElementsByTagName('ul')[0];
+            if (ul.style.display !== 'block') {
+                ul.style.display = 'block';
+            } else {
+                ul.style.display = 'none';
+            }
+        }
+
+        function checkWindowSize() {
+            var navbar = document.getElementById('navbar');
+            var ul = navbar.getElementsByTagName('ul')[0];
+            if (window.innerWidth <= 600) {
+                ul.style.display = 'none';
+            } else {
+                ul.style.display = '';
+            }
+        }
+
+        window.addEventListener('resize', checkWindowSize);
         async function fetchProfileData() {
             try {
                 const response = await fetch('get_cliente.php');
@@ -222,7 +165,11 @@
             if (existingProduct) {
                 existingProduct.quantity += 1;
             } else {
-                cart.push({ product, price, quantity: 1 });
+                cart.push({
+                    product,
+                    price,
+                    quantity: 1
+                });
             }
             updateCart();
         }
@@ -297,13 +244,9 @@
         setInterval(nextImage, 3000); // Cambia la imagen cada 3 segundos
 
         // JavaScript para alternar la visualización del menú en dispositivos móviles
-        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-        const navbar = document.getElementById('navbar');
-
-        mobileNavToggle.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-        });
+        
     </script>
     <script src="js/cart.js"></script>
 </body>
+
 </html>

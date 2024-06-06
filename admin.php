@@ -12,7 +12,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut</title>
     <link href="img/icono.png" rel="icon">
-    <link rel="stylesheet" href="css/admin-e.css">
+    <link rel="stylesheet" href="css/admin_e.css">
 </head>
 <body>
     <main id="hero">

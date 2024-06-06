@@ -46,19 +46,18 @@ header {
 
 /* Estilos para la barra lateral */
 .sidebar {
-    position: absolute;
-    top: 280%; /* Aquí puedes ajustar la posición vertical */
-    left: 600px;
-    transform: translateY(-50%);
+    margin: auto;
+    width: fit-content;
+    transform: translate(50px, 20%);
     background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
     backdrop-filter: blur(5px); /* Aplica un efecto de desenfoque */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
     align-items: center; /* Centra horizontalmente */
     text-align: center; /* Centra el texto */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilos para la imagen en la barra lateral */
@@ -66,7 +65,7 @@ header {
     width: 80px; /* Tamaño de la imagen del usuario */
     height: 80px;
     border-radius: 50%; /* Para que la imagen sea redonda */
-    margin-bottom: 20px;
+    margin: auto;
 }
 
 /* Estilos para el título en la barra lateral */
@@ -96,3 +95,4 @@ header {
 .btn:hover {
     background-color: #ff8c00; /* Color de fondo del botón al pasar el mouse */
 }
+
