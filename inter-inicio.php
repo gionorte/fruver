@@ -17,15 +17,7 @@
                 <div class="logo">
                     <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
                 </div>
-                <h2 class="eri">INZUFRUT</h2>
-                <div class="contact-info d-flex align-items-center flex-container">
-                    <div class="contact-item">
-                        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">inzufruts.a.s@outlook.es</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="bi bi-phone-fill phone-icon"></i> <a href=""><p>+57 320 778 5187</p></a>
-                    </div>
-                </div>
+                <h2 class="eri">INZUFRUT</h2>                
             </div>
             <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
             <nav id="navbar" class="navbar">
@@ -102,18 +94,18 @@
     </div>
 
     <footer>
-        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>
-        <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
+        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>        
+        <a href="mailto:inzufruts.a.s@outlook.es">inzufruts.a.s@outlook.es <style> </style></a>
+        <p>Tel: +57 320 778 5187</p>
         <div class="social-icons">
             <a href="" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
             <a href="" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
-            <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
-            <a href="" target="_blank"><img src="img/youtube.png" alt="YouTube"></a>
+            <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>            
         </div>
         <div class="logo-ft">
             <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
         </div>
-        <p class="show-cart" onclick="toggleCart()">Ver Carrito</p>
+        <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
     </footer>
     <script>
         function toggleMenu() {
@@ -252,12 +244,7 @@
         setInterval(nextImage, 3000); // Cambia la imagen cada 3 segundos
 
         // JavaScript para alternar la visualización del menú en dispositivos móviles
-        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-        const navbar = document.getElementById('navbar');
-
-        mobileNavToggle.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-        });
+        
     </script>
     <script src="js/cart.js"></script>
 </body>
