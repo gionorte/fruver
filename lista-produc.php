@@ -1,11 +1,11 @@
 <?php
 session_start();
+include("conexion.php");
+
 if (!isset($_SESSION['Id_Cargo'])) {
     header("Location: iniciosesion.php");
     exit();
 }
-
-include("conexion.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +18,7 @@ include("conexion.php");
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 </head>
 <body>
     <main id="hero">
@@ -32,7 +33,7 @@ include("conexion.php");
             <h2>Gestión de Productos</h2>
             <table id="productoTabla" class="display">
                 <thead>
-                <tr>
+                    <tr>
                         <th>Id de Producto</th>
                         <th>Nombre de Producto</th>
                         <th>Cantidad</th>
@@ -55,9 +56,9 @@ include("conexion.php");
                         echo "<td>" . $row['Cantidad'] . "</td>";
                         echo "<td>" . $row['Fecha_Venc'] . "</td>";
                         echo "<td>" . $row['Descripcion'] . "</td>";
-                        echo "<td>" . $row['Estado'] . "</td>";
+                        echo "<td>" . $row['Id_Estado'] . "</td>";
                         echo "<td>" . $row['Precio'] . "</td>";
-                        echo "<td><img src='uploads/" . $row['Imagen'] . "' alt='imagen_producto' style='width: 100px;'></td>";
+                        echo "<td><img src='uploads/" . $row['imagen'] . "' alt='imagen_producto' style='width: 100px;'></td>";
                         echo "<td>
                                 <button onclick=\"editProduct('" . $row['Id_Producto'] . "')\">Editar</button> <br><br>
                                 <button onclick=\"deleteProduct('" . $row['Id_Producto'] . "')\">Eliminar</button>
@@ -73,9 +74,17 @@ include("conexion.php");
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#productoTabla').DataTable({
+            var table = $('#productoTabla').DataTable({
                 language: {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontraron registros",
@@ -89,8 +98,13 @@ include("conexion.php");
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                }
+                },
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
             });
+
+            table.buttons().container().appendTo( '#productoTabla_wrapper .col-md-6:eq(0)' );
         });
 
         function editProduct(id) {
@@ -103,36 +117,15 @@ include("conexion.php");
             }
         }
 
-        function exportTableToExcel(tableID, filename = ''){
-            var downloadLink;
-            var dataType = 'application/vnd.ms-excel';
-            var tableSelect = document.getElementById(tableID);
-            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-            
-            filename = filename?filename+'.xls':'excel_data.xls';
-            
-            downloadLink = document.createElement("a");
-            
-            document.body.appendChild(downloadLink);
-            
-            if(navigator.msSaveOrOpenBlob){
-                var blob = new Blob(['\ufeff', tableHTML], {
-                    type: dataType
-                });
-                navigator.msSaveOrOpenBlob(blob, filename);
-            } else {
-                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-                downloadLink.download = filename;
-                downloadLink.click();
-            }
+        function exportTableToExcel(tableID, filename = '') {
+            var table = $('#productoTabla').DataTable();
+            table.buttons('.buttons-excel').trigger();
         }
 
         function exportTableToPDF(tableID) {
-            var { jsPDF } = window.jspdf;
-            var doc = new jsPDF('p', 'pt', 'a4');
-            doc.text("Productos", 40, 50);
-            doc.autoTable({ html: '#' + tableID, startY: 60 });
-            doc.save('productos.pdf');
+            var table = $('#productoTabla').DataTable();
+            table.buttons('.buttons-pdf').trigger();
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs
+</body>
+</html>
