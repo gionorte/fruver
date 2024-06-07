@@ -7,7 +7,6 @@
     <title>Inzufrut</title>
     <link href="img/icon-p.png" rel="icon">
     <link rel="stylesheet" href="css/inter-in.css">
-
 </head>
 
 <body>
@@ -17,7 +16,9 @@
                 <div class="logo">
                     <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
                 </div>
-                <h2 class="eri">INZUFRUT</h2>                
+                <div>
+                    <h2 class="eri">INZUFRUT</h2>
+                </div>
             </div>
             <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
             <nav id="navbar" class="navbar">
@@ -40,7 +41,7 @@
 
         <video autoplay muted loop>
             <source src="videos/ini-inter.mp4" type="video/mp4">
-        </video>        
+        </video>
 
         <section>
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
@@ -54,7 +55,6 @@
     <h2 class="titulo">Nuestros productos</h2>
 
     <section class="produc-vista">
-
         <div class="product">
             <img src="img/manzana.jpg" alt="Manzana">
             <h3>Manzana</h3>
@@ -83,6 +83,7 @@
         <div id="cart-items"></div>
         <p class="cart-total">Total: $<span id="cart-total">0</span></p>
         <button onclick="clearCart()">Vaciar Carrito</button>
+        <button onclick="checkout()">Realizar Compra</button>
     </div>
 
     <div class="profile-container" id="profile-container">
@@ -91,22 +92,43 @@
             <!-- Datos del cliente se insertarán aquí -->
         </div>
         <button onclick="editProfile()">Editar Perfil</button>
+        <button onclick="deleteProfile()">Eliminar Perfil</button>
+    </div>
+
+    <div id="edit-profile-container" style="display:none;">
+        <h2>Editar Perfil</h2>
+        <form id="edit-profile-form">
+            <label for="Prim_Nombre">Primer Nombre:</label>
+            <input type="text" id="Prim_Nombre" name="Prim_Nombre"><br>
+            <label for="Seg_Nombre">Segundo Nombre:</label>
+            <input type="text" id="Seg_Nombre" name="Seg_Nombre"><br>
+            <label for="Prim_Apellido">Primer Apellido:</label>
+            <input type="text" id="Prim_Apellido" name="Prim_Apellido"><br>
+            <label for="Seg_Apellido">Segundo Apellido:</label>
+            <input type="text" id="Seg_Apellido" name="Seg_Apellido"><br>
+            <label for="Telefono">Teléfono:</label>
+            <input type="text" id="Telefono" name="Telefono"><br>
+            <label for="Correo">Correo:</label>
+            <input type="email" id="Correo" name="Correo"><br>
+            <button type="button" onclick="saveProfile()">Guardar</button>
+        </form>
     </div>
 
     <footer>
-        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>        
-        <a href="mailto:inzufruts.a.s@outlook.es">inzufruts.a.s@outlook.es <style> </style></a>
-        <p>Tel: +57 320 778 5187</p>
+        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>
+        <a href="mailto:inzufruts.a.s@outlook.es" style="color: white;">inzufruts.a.s@outlook.es</a>
+        <p>Tel: +57 320 778-5187</p>
         <div class="social-icons">
             <a href="" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
             <a href="" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
-            <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>            
+            <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
         </div>
         <div class="logo-ft">
             <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
         </div>
         <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
     </footer>
+
     <script>
         function toggleMenu() {
             var navbar = document.getElementById('navbar');
@@ -129,6 +151,7 @@
         }
 
         window.addEventListener('resize', checkWindowSize);
+
         async function fetchProfileData() {
             try {
                 const response = await fetch('get_cliente.php');
@@ -153,11 +176,59 @@
             }
         }
 
-        // Llama a la función para obtener los datos del cliente cuando la página se carga
-        window.onload = fetchProfileData;
-    </script>
+        function toggleProfile() {
+            const profileContainer = document.getElementById('profile-container');
+            profileContainer.style.display = profileContainer.style.display === 'block' ? 'none' : 'block';
+        }
 
-    <script>
+        function editProfile() {
+            const editProfileContainer = document.getElementById('edit-profile-container');
+            editProfileContainer.style.display = editProfileContainer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        async function saveProfile() {
+            const form = document.getElementById('edit-profile-form');
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('update_cliente.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                if (result.success) {
+                    alert('Perfil actualizado exitosamente');
+                    fetchProfileData();
+                    editProfile();
+                } else {
+                    alert('Error al actualizar el perfil: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error updating profile:', error);
+            }
+        }
+
+        async function deleteProfile() {
+            if (confirm('¿Estás seguro de que deseas eliminar tu perfil?')) {
+                try {
+                    const response = await fetch('delete_cliente.php', {
+                        method: 'POST'
+                    });
+                    const result = await response.json();
+                    if (result.success) {
+                        alert('Perfil eliminado exitosamente');
+                        window.location.href = 'inter-inicio.php';
+                    } else {
+                        alert('Error al eliminar el perfil: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error deleting profile:', error);
+                }
+            }
+        }
+
+        window.onload = fetchProfileData;
+
         let cart = [];
 
         function addToCart(product, price) {
@@ -214,13 +285,8 @@
             cartContainer.style.display = cartContainer.style.display === 'block' ? 'none' : 'block';
         }
 
-        function toggleProfile() {
-            const profileContainer = document.getElementById('profile-container');
-            profileContainer.style.display = profileContainer.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function editProfile() {
-            alert('Función para editar perfil no implementada.');
+        function checkout() {
+            alert('Función de compra no implementada.');
         }
 
         document.querySelectorAll('.add-to-cart').forEach(button => {
@@ -230,23 +296,7 @@
                 addToCart(product, price);
             });
         });
-
-        // JavaScript para el carrusel de imágenes
-        const images = document.querySelectorAll('.carousel img');
-        let index = 0;
-
-        function nextImage() {
-            images[index].classList.remove('active');
-            index = (index + 1) % images.length;
-            images[index].classList.add('active');
-        }
-
-        setInterval(nextImage, 3000); // Cambia la imagen cada 3 segundos
-
-        // JavaScript para alternar la visualización del menú en dispositivos móviles
-        
     </script>
-    <script src="js/cart.js"></script>
 </body>
 
 </html>

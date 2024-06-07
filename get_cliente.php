@@ -1,27 +1,26 @@
 <?php
 header('Content-Type: application/json');
-include("conexion.php"); // Asegúrate de que este archivo establece la conexión con tu base de datos
-
 session_start();
 
-if (!isset($_SESSION['correo'])) {
-    echo json_encode(["error" => "Usuario no autenticado"]);
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['error' => 'No has iniciado sesión']);
     exit();
 }
 
-$correo = $_SESSION['correo'];
+$user_id = $_SESSION['user_id'];
 
-$sql = "SELECT Num_Doc, Tipo_Doc, Prim_Nombre, Seg_Nombre, Prim_Apellido, Seg_Apellido, Genero, Telefono, Correo FROM clientes WHERE Correo = ?";
+include("conexion.php");
+
+$sql = "SELECT Num_Doc, Tipo_Doc, Prim_Nombre, Seg_Nombre, Prim_Apellido, Seg_Apellido, Genero, Telefono, Correo FROM clientes WHERE id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $correo);
+$stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    echo json_encode($row);
+    echo json_encode($result->fetch_assoc());
 } else {
-    echo json_encode(["error" => "No se encontraron datos del cliente"]);
+    echo json_encode(['error' => 'No se encontraron datos']);
 }
 
 $stmt->close();
