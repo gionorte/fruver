@@ -12,7 +12,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut</title>
     <link href="img/icono.png" rel="icon">
-    <link rel="stylesheet" href="css/admin-e.css">
+    <link rel="stylesheet" href="css/admin_e.css">
 </head>
 <body>
     <main id="hero">
@@ -32,10 +32,11 @@ if (!isset($_SESSION['Id_Cargo'])) {
             <h2>Erik Armando Pabon Tovar</h2>
             <button class="btn" onclick="window.location.href='registrar.php'">Registrar Empleado</button>
             <button class="btn" onclick="window.location.href='regis-producto.php'">Registrar Producto</button>
+            <button class="btn" onclick="window.location.href='Registrar_inventario.php'">Registrar Inventario</button>
             <button class="btn" onclick="window.location.href=''">Ver Orden de Compra</button>
             <button class="btn" onclick="window.location.href='lista-produc.php'">Lista de Productos</button>
             <button class="btn" onclick="window.location.href='lista-empleados.php'">Lista de Empleados</button>
-            <button class="btn" onclick="window.location.href=''">Asignar Tarea</button>
+            <button class="btn" onclick="window.location.href='asignar_tarea.php'">Asignar Tarea</button>
         </div>
     </main>
     <script>

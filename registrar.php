@@ -86,6 +86,10 @@ if (!isset($_SESSION['Id_Cargo'])) {
                     <i class="fa fa-eye eye-icon" id="eye-icon"></i>
                 </div>
                 <div class="form-group">
+                    <label for="salario">Salario: *</label>
+                    <input type="number" id="salario" name="salario" step="0.01" required>
+                </div>
+                <div class="form-group">
                     <label for="id_cargo">Cargo: *</label>
                     <select id="id_cargo" name="id_cargo" required>
                         <?php
@@ -101,15 +105,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
             </form>
         </div>
     </main>
+    <script src="js/registro_exitoso.js" ></script>
     <script src="js/validacion-res-per.js"></script>
-    <script>
-        // Evitar que el usuario navegue hacia atrás
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-        window.onpopstate = function() {
-            window.history.go(1);
-        };
-    </script>
 </body>
 </html>
