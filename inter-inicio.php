@@ -16,15 +16,15 @@
                 <div class="logo">
                     <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
                 </div>
-                <div>
+            </div>
+            <div>
                     <h2 class="eri">INZUFRUT</h2>
                 </div>
-            </div>
             <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="btn-get-started scrollto" href="inter-inicio.php">Inicio</a></li>
-                    <li><a class="btn-get-started scrollto" href="#">Productos</a></li>
+                    <li><a class="btn-get-started scrollto" href="carrito/tienda.php">Productos</a></li>
                     <li><a class="btn-get-started scrollto" href="contactanos.php">Contactanos</a></li>
                     <li><a class="btn-get-started scrollto" href="registro_cliente.php">Registrate</a></li>
                 </ul>
