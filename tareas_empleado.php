@@ -1,11 +1,11 @@
 <?php
 session_start();
-include("conexion.php");
-
 if (!isset($_SESSION['Id_Cargo'])) {
     header("Location: iniciosesion.php");
     exit();
 }
+
+include("conexion.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,50 +18,49 @@ if (!isset($_SESSION['Id_Cargo'])) {
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 </head>
 <body>
     <main id="hero">
         <header>
             <div class="logo">
                 <h1>
-                    <a href="admin.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a>
+                    <a href="empleado.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a>
                 </h1>
             </div>
         </header>
         <div class="form-container inicio">
-            <h2>Gestión de Productos</h2>
+            <h2>Gestión de Tareas</h2>
             <table id="productoTabla" class="display">
                 <thead>
-                    <tr>
-                        <th>Id de Producto</th>
-                        <th>Nombre de Producto</th>
-                        <th>Cantidad</th>
-                        <th>Fecha de Vencimiento</th>
+                <tr>
+                        <th>Id de Tarea</th>
+                        <th>Numero de Documento</th>
+                        <th>Actividad</th>
                         <th>Descripción</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de Fin</th>
                         <th>Estado</th>
-                        <th>Precio</th>
-                        <th>Imagen</th>
+                        <th>Observaciones</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM productos";
+                    $sql = "SELECT * FROM tarea";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row['Id_Producto'] . "</td>";
-                        echo "<td>" . $row['Nom_Product'] . "</td>";
-                        echo "<td>" . $row['Cantidad'] . "</td>";
-                        echo "<td>" . $row['Fecha_Venc'] . "</td>";
+                        echo "<td>" . $row['Id_Tarea'] . "</td>";
+                        echo "<td>" . $row['Num_Doc'] . "</td>";
+                        echo "<td>" . $row['Actividad'] . "</td>";
                         echo "<td>" . $row['Descripcion'] . "</td>";
+                        echo "<td>" . $row['Fecha_Inicio'] . "</td>";
+                        echo "<td>" . $row['Fecha_Fin'] . "</td>";
                         echo "<td>" . $row['Id_Estado'] . "</td>";
-                        echo "<td>" . $row['Precio'] . "</td>";
-                        echo "<td><img src='uploads/" . $row['imagen'] . "' alt='imagen_producto' style='width: 100px;'></td>";
+                        echo "<td>" . $row['Observacion'] . "</td>";
                         echo "<td>
-                                <button onclick=\"editProduct('" . $row['Id_Producto'] . "')\">Editar</button> <br><br>
-                                <button onclick=\"deleteProduct('" . $row['Id_Producto'] . "')\">Eliminar</button>
+                                <button onclick=\"editProduct('" . $row['Id_Tarea'] . "')\">Editar</button> <br><br>
+                                <button onclick=\"deleteProduct('" . $row['Id_Tarea'] . "')\">Eliminar</button>
                               </td>";
                         echo "</tr>";
                     }
@@ -74,17 +73,9 @@ if (!isset($_SESSION['Id_Cargo'])) {
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script>
         $(document).ready(function() {
-            var table = $('#productoTabla').DataTable({
+            $('#productoTabla').DataTable({
                 language: {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontraron registros",
@@ -98,13 +89,8 @@ if (!isset($_SESSION['Id_Cargo'])) {
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                },
-                buttons: [
-                    'copy', 'excel', 'pdf'
-                ]
+                }
             });
-
-            table.buttons().container().appendTo( '#productoTabla_wrapper .col-md-6:eq(0)' );
         });
 
         function editProduct(id) {
@@ -117,15 +103,36 @@ if (!isset($_SESSION['Id_Cargo'])) {
             }
         }
 
-        function exportTableToExcel(tableID, filename = '') {
-            var table = $('#productoTabla').DataTable();
-            table.buttons('.buttons-excel').trigger();
+        function exportTableToExcel(tableID, filename = ''){
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+            
+            filename = filename?filename+'.xls':'excel_data.xls';
+            
+            downloadLink = document.createElement("a");
+            
+            document.body.appendChild(downloadLink);
+            
+            if(navigator.msSaveOrOpenBlob){
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+                downloadLink.download = filename;
+                downloadLink.click();
+            }
         }
 
         function exportTableToPDF(tableID) {
-            var table = $('#productoTabla').DataTable();
-            table.buttons('.buttons-pdf').trigger();
+            var { jsPDF } = window.jspdf;
+            var doc = new jsPDF('p', 'pt', 'a4');
+            doc.text("Productos", 40, 50);
+            doc.autoTable({ html: '#' + tableID, startY: 60 });
+            doc.save('productos.pdf');
         }
     </script>
-</body>
-</html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs

@@ -1,0 +1,141 @@
+/* Reset de márgenes y padding, y configuración de fuente y fondo */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+/* Estilo del contenedor principal */
+#hero {
+    position: relative;
+    padding: 20px;
+    margin:  auto; /* Esto centrará el contenedor horizontalmente */
+}
+
+/* Estilo del encabezado */
+header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+/* Estilo del logo */
+.logo img {
+    width: 70px;
+    height: auto;
+}
+
+/* Estilo del contenedor de formularios */
+.form-container {
+    max-width: 1200px;
+    margin: 70px auto;
+    padding: 100px; /* Ajusta según sea necesario */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilo del título de la sección */
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+}
+
+/* Estilo de la tabla de registros */
+#productoTabla {
+    width: 100%; /* Ajusta según sea necesario */
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#productoTabla th, #productoTabla td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+#productoTabla th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+#productoTabla tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#productoTabla tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo de los botones */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffa500;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #ff8c00;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:last-child {
+    margin-right: 0;
+}
+
+/* Estilo del botón de exportación */
+button.export {
+    margin-top: 20px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4caf50;
+}
+
+button.export:hover {
+    background-color: #45a049;
+}
+/* Estilo adicional para la tabla de registros */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 20px;
+}
+
+.dataTables_filter input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.dataTables_length select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}

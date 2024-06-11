@@ -30,14 +30,11 @@ if (!isset($_SESSION['Id_Cargo'])) {
         <div class="sidebar">
             <img src="img/icon-in.png" alt="icon">
             <h2>Erik Armando Pabon Tovar</h2>
-            <button class="btn" onclick="window.location.href='registrar.php'">Registrar Empleado</button>
             <button class="btn" onclick="window.location.href='regis-producto.php'">Registrar Producto</button>
-            <button class="btn" onclick="window.location.href='Registrar_inventario.php'">Registrar Inventario</button>
             <button class="btn" onclick="window.location.href=''">Ver Orden de Compra</button>
             <button class="btn" onclick="window.location.href='lista-produc.php'">Lista de Productos</button>
             <button class="btn" onclick="window.location.href='lista-empleados.php'">Lista de Empleados</button>
-            <button class="btn" onclick="window.location.href='lista_inventario.php'">Lista de Inventarios</button>
-            <button class="btn" onclick="window.location.href='asignar_tarea.php'">Asignar Tarea</button>
+            <button class="btn" onclick="window.location.href='tareas_empleado.php'">consultar Tarea</button>
         </div>
     </main>
     <script>

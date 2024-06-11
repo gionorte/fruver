@@ -1,11 +1,19 @@
 <?php
 session_start();
+
+// Redirigir si el usuario no está autenticado
 if (!isset($_SESSION['Id_Cargo'])) {
     header("Location: iniciosesion.php");
     exit();
 }
+
 include("conexion.php");
+
+// Consulta SQL para obtener los registros de la base de datos
+$sql = "SELECT * FROM persona";
+$result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,15 +48,13 @@ include("conexion.php");
                         <th>Género</th>
                         <th>Teléfono</th>
                         <th>Correo</th>
-                        <th>Contraseña</th>
                         <th>Cargo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM persona";
-                    $result = $conn->query($sql);
+                    // Mostrar los registros en la tabla
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row['Num_Doc'] . "</td>";
@@ -60,14 +66,12 @@ include("conexion.php");
                         echo "<td>" . $row['Genero'] . "</td>";
                         echo "<td>" . $row['Telefono'] . "</td>";
                         echo "<td>" . $row['Correo'] . "</td>";
-                        echo "<td>" . $row['Contrasena'] . "</td>"; // Aquí se muestra la contraseña
                         echo "<td>" . $row['Id_Cargo'] . "</td>";
                         echo "<td>";
                         echo "<button onclick=\"editRecord('" . $row['Num_Doc'] . "')\">Editar</button> <br><br>";
                         echo "<button onclick=\"deleteRecord('" . $row['Num_Doc'] . "')\">Eliminar</button>";
                         echo "</td>";
                         echo "</tr>";
-
                     }
                     ?>
                 </tbody>
@@ -78,8 +82,11 @@ include("conexion.php");
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Inicializar DataTable
             $('#registroTabla').DataTable({
                 language: {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
@@ -98,16 +105,19 @@ include("conexion.php");
             });
         });
 
+        // Función para editar un registro
         function editRecord(num_doc) {
             window.location.href = `modif-emple.php?num_doc=${num_doc}`;
         }
 
+        // Función para eliminar un registro
         function deleteRecord(num_doc) {
             if (confirm('¿Estás seguro de que deseas eliminar este registro?')) {
                 window.location.href = `delete_record.php?num_doc=${num_doc}`;
             }
         }
 
+        // Función para exportar la tabla a Excel
         function exportTableToExcel(tableID, filename = ''){
             var downloadLink;
             var dataType = 'application/vnd.ms-excel';
@@ -132,15 +142,37 @@ include("conexion.php");
             }
         }
 
-        function exportTableToPDF(tableID) {
-            var { jsPDF } = window.jspdf;
-            var doc = new jsPDF('p', 'pt', 'a4');
-            doc.text("Registros", 40, 50);
-            doc.autoTable({ html: '#' + tableID, startY: 60 });
-            doc.save('Empleados.pdf');
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+       // Función para exportar la tabla a PDF
+function exportTableToPDF(tableID) {
+    var { jsPDF } = window.jspdf;
+    var doc = new jsPDF('p', 'pt', 'a4');
+    var logo = new Image();
+    logo.src = 'img/icono.png';
+
+    // Agregar el logo y el título
+    doc.addImage(logo, 'PNG', 40, 10, 70, 70);
+    doc.setFontSize(18);
+    doc.text(" Lista de Empleados ", 120, 50);
+
+    // Obtener los datos de la tabla
+    var table = document.getElementById(tableID);
+
+    // Configurar opciones para la exportación de PDF
+    var options = {
+        startY: 100
+    };
+
+    // Remover la columna de "Acciones" antes de exportar
+    $(table).find('thead th:last-child, tbody td:last-child').remove();
+
+    // Agregar la tabla al PDF
+    doc.autoTable({ html: table, ...options });
+
+    // Descargar el archivo PDF
+    doc.save('Empleados.pdf');
+}
+
+</script>
 </body>
 </html>
+

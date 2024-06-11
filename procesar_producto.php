@@ -47,7 +47,7 @@ if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
 }
 
 // Insertar los datos en la base de datos
-$stmt = $conn->prepare("INSERT INTO productos (Nom_Product, Cantidad, Fecha_Venc, Descripcion, Estado, Precio, Imagen) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO productos (Nom_Product, Cantidad, Fecha_Venc, Descripcion, Id_Estado, Precio, Imagen) VALUES (?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("sisssds", $nom_product, $cantidad, $fecha_venc, $descripcion, $id_estado, $precio, $imagen);
 
 if ($stmt->execute()) {
