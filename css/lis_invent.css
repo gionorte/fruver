@@ -64,10 +64,15 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+<<<<<<< HEAD
 #inventarioTabla th,
 #inventarioTabla td {
+=======
+#inventarioTabla th, #inventarioTabla td {
+>>>>>>> 94f002efc164179a8a92fd6284921c1bf00b5b9d
     padding: 12px 15px;
     border: 1px solid #ddd;
+    text-align: center;
 }
 
 #inventarioTabla th {
