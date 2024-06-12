@@ -23,10 +23,11 @@ if ($result === false) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut - Gestión de Inventario</title>
-    <link rel="stylesheet" href="tu_archivo_css.css"> <!-- Reemplaza "tu_archivo_css.css" con la ruta de tu archivo CSS -->
+    <link rel="stylesheet" href="css/lis_invent.css">
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 </head>
 <body>
     <main id="hero">
@@ -48,6 +49,7 @@ if ($result === false) {
                         <th>Lote</th>
                         <th>Id de Producto</th>
                         <th>Id de Venta</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,7 +63,11 @@ if ($result === false) {
                         echo "<td>" . $row['Lote'] . "</td>";
                         echo "<td>" . $row['Id_Producto'] . "</td>";
                         echo "<td>" . $row['Id_Venta'] . "</td>";
-                        echo "</tr>";
+                        echo "<td>
+                        <button class='editar' onclick='editarRegistro(" . $row['Id_FlujoInven'] . ")'>Editar</button> <br><br>
+                        <button class='eliminar' onclick='eliminarRegistro(" . $row['Id_FlujoInven'] . ")'>Eliminar</button>
+                    </td>";
+                    echo "</tr>";
                     }
                     ?>
                 </tbody>
@@ -72,9 +78,15 @@ if ($result === false) {
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#inventarioTabla').DataTable({
+            var table = $('#inventarioTabla').DataTable({
                 language: {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontraron registros",
@@ -88,49 +100,24 @@ if ($result === false) {
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                }
+                },
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
             });
+
+            table.buttons().container().appendTo('#inventarioTabla_wrapper .col-md-6:eq(0)');
         });
 
-        function exportTableToExcel(tableID, filename = ''){
-            var downloadLink;
-            var dataType = 'application/vnd.ms-excel';
-            var tableSelect = document.getElementById(tableID);
-            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-            
-            filename = filename?filename+'.xls':'excel_data.xls';
-            
-            downloadLink = document.createElement("a");
-            
-            document.body.appendChild(downloadLink);
-            
-            if(navigator.msSaveOrOpenBlob){
-                var blob = new Blob(['\ufeff', tableHTML], {
-                    type: dataType
-                });
-                navigator.msSaveOrOpenBlob(blob, filename);
-            } else {
-                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-                downloadLink.download = filename;
-                downloadLink.click();
-            }
+        function exportTableToExcel(tableID, filename = '') {
+            var table = $('#inventarioTabla').DataTable();
+            table.buttons('.buttons-excel').trigger();
         }
 
         function exportTableToPDF(tableID) {
-            var { jsPDF } = window.jspdf;
-            var doc = new jsPDF('p', 'pt', 'a4');
-            // Agregar el logo al documento PDF
-            var img = new Image();
-            img.src = 'img/icono.png'; // Ruta del logo
-            doc.addImage(img, 'PNG', 40, 20, 70, 70); // Posición y tamaño del logo
-
-            // Agregar la tabla al documento PDF
-            doc.text("Inventario", 40, 120); // Título de la tabla
-            doc.autoTable({ html: '#' + tableID, startY: 140 }); // Inicio de la tabla
-
-            // Guardar el documento PDF
-            doc.save('inventario.pdf');
+            var table = $('#inventarioTabla').DataTable();
+            table.buttons('.buttons-pdf').trigger();
         }
-    </script>
+    </script> 
 </body>
 </html>
