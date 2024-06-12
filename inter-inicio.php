@@ -16,6 +16,10 @@
                 <div class="logo">
                     <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
                 </div>
+<<<<<<< HEAD
+=======
+                
+>>>>>>> c27d46caab91f82c66e26a44a09e8b4db3a91b25
             </div>
             <div>
                     <h2 class="eri">INZUFRUT</h2>
