@@ -59,7 +59,7 @@ header {
 .form-group textarea,
 .form-group select {
     width: calc(100% - 20px);
-    padding: 8px 1px;
+    padding: 8px 1  px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }

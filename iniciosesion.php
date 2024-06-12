@@ -37,7 +37,7 @@
         </video>
         <div class="capa"></div>
     </main>
-    <script src="js/validar_iniciosesion.js"></script>
+    <script src="Js/validar_iniciosesion.js"></script>
     <script>
     // Evitar que el usuario navegue hacia atrás
     if (window.history.replaceState) {

@@ -38,6 +38,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
             <button class="btn" onclick="window.location.href='lista-empleados.php'">Lista de Empleados</button>
             <button class="btn" onclick="window.location.href='lista_inventario.php'">Lista de Inventarios</button>
             <button class="btn" onclick="window.location.href='asignar_tarea.php'">Asignar Tarea</button>
+            <button class="btn" onclick="window.location.href='carrito/tienda.php'">Ver tienda</button>
         </div>
     </main>
     <script>
