@@ -23,7 +23,7 @@ if ($result === false) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut - Gestión de Inventario</title>
-    <link rel="stylesheet" href="tu_archivo_css.css"> <!-- Reemplaza "tu_archivo_css.css" con la ruta de tu archivo CSS -->
+    <link rel="stylesheet" href="css/lis_invent.css"> 
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -48,6 +48,7 @@ if ($result === false) {
                         <th>Lote</th>
                         <th>Id de Producto</th>
                         <th>Id de Venta</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,6 +62,10 @@ if ($result === false) {
                         echo "<td>" . $row['Lote'] . "</td>";
                         echo "<td>" . $row['Id_Producto'] . "</td>";
                         echo "<td>" . $row['Id_Venta'] . "</td>";
+                        echo "<td>
+                            <botón clase='editar' onclick='editarRegistro(" . $fila [ 'Id_FlujoInven' ] . ")'>Editar</button> <br><br>
+                            <botón clase='eliminar' onclick='eliminarRegistro(" . $fila [ 'Id_FlujoInven' ] . ")'>Eliminar</button>
+                            </td>" ;
                         echo "</tr>";
                     }
                     ?>

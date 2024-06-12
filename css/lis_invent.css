@@ -1,5 +1,6 @@
 /* Reset de márgenes y padding, y configuración de fuente y fondo */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -12,7 +13,7 @@ body, html {
 #hero {
     position: relative;
     padding: 20px;
-    margin:  auto; /* Esto centrará el contenedor horizontalmente */
+    margin: auto; /* Esto centrará el contenedor horizontalmente */
 }
 
 /* Estilo del encabezado */
@@ -54,7 +55,7 @@ header {
 }
 
 /* Estilo de la tabla de registros */
-#productoTabla {
+#inventarioTabla {
     width: 100%; /* Ajusta según sea necesario */
     border-collapse: collapse;
     margin: 20px 0;
@@ -63,22 +64,23 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#productoTabla th, #productoTabla td {
+#inventarioTabla th,
+#inventarioTabla td {
     padding: 12px 15px;
     border: 1px solid #ddd;
 }
 
-#productoTabla th {
+#inventarioTabla th {
     background-color: #f2f2f2;
     color: #333;
     font-weight: bold;
 }
 
-#productoTabla tr:nth-child(even) {
+#inventarioTabla tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-#productoTabla tr:hover {
+#inventarioTabla tr:hover {
     background-color: #f1f1f1;
 }
 
@@ -119,6 +121,7 @@ button.export {
 button.export:hover {
     background-color: #45a049;
 }
+
 /* Estilo adicional para la tabla de registros */
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter {
