@@ -17,7 +17,7 @@
         <div class="inicio">
             <h2>Ingresa con tu cuenta</h2>
             <img src="img/icon-in.png" alt="icon" style="width: 60px; margin-bottom: 20px;">
-            <form method="post" action="procesar_login.php" onsubmit="return validarFormulario()">
+            <form id="miFormulario" method="post" action="procesar_login.php" onsubmit="return validarFormulario()">
                 <label for="correo">Correo electrónico</label><br>
                 <input type="email" name="correo" id="correo" autofocus><br>
                 <label for="contrasena">Contraseña</label><br>
@@ -30,7 +30,7 @@
             if (!empty($error)) {
                 echo "<p style='color:red;'>$error</p>";
             }
-            ?>
+            ?> 
         </div>
         <video autoplay muted loop>
             <source src="videos/ini-inter.mp4" type="video/mp4">
