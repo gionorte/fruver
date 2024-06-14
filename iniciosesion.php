@@ -6,6 +6,29 @@
     <title>Inzufrut - Acceso</title>
     <link href="img/icon-p.png" rel="icon">
     <link rel="stylesheet" href="css/iniciose.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilo para el icono de ojo */
+.eye-icon {
+    position: absolute;
+    top: 66%;
+    right: 530px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Contenedor para alinear el ícono de ojo con el campo de contraseña */
+.password-container {
+    position: relative;
+    margin-bottom: 15px; /* Ajuste según necesidad */
+}
+
+/* Ocultar la contraseña por defecto */
+#contrasena {
+    padding-right: 30px; /* Espacio para el icono de ojo */
+}
+
+    </style>
 </head>
 <body>
     <main id="hero">
@@ -21,8 +44,9 @@
                 <label for="correo">Correo electrónico</label><br>
                 <input type="email" name="correo" id="correo" autofocus><br>
                 <label for="contrasena">Contraseña</label><br>
-                <input type="password" name="contrasena" id="contrasena"><br>
-                <a href="">Olvidaste la Contraseña</a>
+                <input type="password" name="contrasena" id="contrasena" ><br>
+                <i class="fa fa-eye eye-icon" id="eye-icon"></i>
+                <a href="#">Olvidaste la Contraseña</a>
                 <br>
                 <button type="submit">Ingresar</button>
             </form>
@@ -30,7 +54,7 @@
             if (!empty($error)) {
                 echo "<p style='color:red;'>$error</p>";
             }
-            ?> 
+            ?>
         </div>
         <video autoplay muted loop>
             <source src="videos/ini-inter.mp4" type="video/mp4">
@@ -39,13 +63,17 @@
     </main>
     <script src="Js/validar_iniciosesion.js"></script>
     <script>
-    // Evitar que el usuario navegue hacia atrás
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-    window.onpopstate = function() {
-        window.history.go(1);
-    };
+        document.addEventListener('DOMContentLoaded', function() {
+    const eyeIcon = document.getElementById('eye-icon');
+    const passwordInput = document.getElementById('contrasena');
+
+    eyeIcon.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        eyeIcon.classList.toggle('fa-eye-slash'); // Cambia el ícono a ojo tachado cuando la contraseña es visible
+    });
+});
+
     </script>
 </body>
 </html>
