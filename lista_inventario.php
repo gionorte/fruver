@@ -8,13 +8,16 @@ if ($conn === false) {
 }
 
 // Realizar la consulta SQL para obtener los datos del inventario
-$sql = "SELECT * FROM inventario";
+$sql = "SELECT * FROM inventario WHERE cantidad > 0"; // Asegurarse de que solo se seleccionen productos disponibles
 $result = $conn->query($sql);
 
 // Verificar si la consulta fue exitosa
 if ($result === false) {
     die("Error: La consulta SQL ha fallado.");
 }
+
+// Inicializar la variable para verificar si hay productos disponibles
+$productos_disponibles = $result->num_rows > 0;
 ?>
 
 <!DOCTYPE html>
@@ -39,44 +42,50 @@ if ($result === false) {
         </header>
         <div class="form-container inicio">
             <h2>Gestión de Inventario</h2>
-            <table id="inventarioTabla" class="display">
-                <thead>
-                    <tr>
-                        <th>Id de Flujo de Inventario</th>
-                        <th>Id de Empleado</th>
-                        <th>Nombre del Producto</th>
-                        <th>Lote</th>
-                        <th>Id de Producto</th>
-                        <th>Id de Venta</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Iterar sobre los resultados de la consulta y mostrarlos en la tabla
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['Id_FlujoInven'] . "</td>";
-                        echo "<td>" . $row['Id_Empleado'] . "</td>";
-                        echo "<td>" . $row['Nom_Product'] . "</td>";
-                        echo "<td>" . $row['Lote'] . "</td>";
-                        echo "<td>" . $row['Id_Producto'] . "</td>";
-                        echo "<td>" . $row['Id_Venta'] . "</td>";
-                        echo "<td>
-                            <button class='editar' onclick='editarRegistro(" . $row['Id_FlujoInven'] . ")'>Editar</button><br><br>
-                            <button class='eliminar' onclick='eliminarRegistro(" . $row['Id_FlujoInven'] . ")'>Eliminar</button>
-                            </td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-            <button class="export" onclick="exportTableToExcel('inventarioTabla', 'inventario')">Exportar a Excel</button>
-            <button class="export" onclick="exportTableToPDF('inventarioTabla')">Exportar a PDF</button>
+            <?php if ($productos_disponibles): ?>
+                <table id="inventarioTabla" class="display">
+                    <thead>
+                        <tr>
+                            <th>Id de Flujo de Inventario</th>
+                            <th>Id de Empleado</th>
+                            <th>Nombre del Producto</th>
+                            <th>Lote</th>
+                            <th>Id de Producto</th>
+                            <th>Id de Venta</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Iterar sobre los resultados de la consulta y mostrarlos en la tabla
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row['Id_FlujoInven'] . "</td>";
+                            echo "<td>" . $row['Id_Empleado'] . "</td>";
+                            echo "<td>" . $row['Nom_Product'] . "</td>";
+                            echo "<td>" . $row['Lote'] . "</td>";
+                            echo "<td>" . $row['Id_Producto'] . "</td>";
+                            echo "<td>" . $row['Id_Venta'] . "</td>";
+                            echo "<td>
+                                <button class='editar' onclick='editarRegistro(" . $row['Id_FlujoInven'] . ")'>Editar</button><br><br>
+                                <button class='eliminar' onclick='eliminarRegistro(" . $row['Id_FlujoInven'] . ")'>Eliminar</button>
+                                </td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <button class="export" onclick="exportTableToExcel('inventarioTabla', 'inventario')">Exportar a Excel</button>
+                <button class="export" onclick="exportTableToPDF('inventarioTabla')">Exportar a PDF</button>
+            <?php else: ?>
+                <p>No hay productos disponibles en el inventario.</p>
+            <?php endif; ?>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#inventarioTabla').DataTable({

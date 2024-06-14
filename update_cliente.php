@@ -9,10 +9,19 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Verificar si los campos obligatorios están presentes
+$required_fields = ['Prim_Nombre', 'Prim_Apellido', 'Telefono', 'Correo'];
+foreach ($required_fields as $field) {
+    if (!isset($_POST[$field])) {
+        echo json_encode(['success' => false, 'message' => 'Campo faltante: ' . $field]);
+        exit();
+    }
+}
+
 $prim_nombre = $_POST['Prim_Nombre'];
-$seg_nombre = $_POST['Seg_Nombre'];
+$seg_nombre = isset($_POST['Seg_Nombre']) ? $_POST['Seg_Nombre'] : null;
 $prim_apellido = $_POST['Prim_Apellido'];
-$seg_apellido = $_POST['Seg_Apellido'];
+$seg_apellido = isset($_POST['Seg_Apellido']) ? $_POST['Seg_Apellido'] : null;
 $telefono = $_POST['Telefono'];
 $correo = $_POST['Correo'];
 
