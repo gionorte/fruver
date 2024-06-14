@@ -1,11 +1,5 @@
 <?php
 // Configuración de la base de datos
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
-
-error_reporting(E_ALL);
-
 include("conexion.php");
 
 // Variable para almacenar mensajes de error
