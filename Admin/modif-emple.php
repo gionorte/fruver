@@ -1,5 +1,5 @@
 <?php
-include('conexion.php');
+include('../includes/conexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $num_doc = $_POST['Num_Doc']; // Cambiado de 'num_doc' a 'Num_Doc' para que coincida con el formulario
@@ -47,10 +47,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Empleado</title>
-    <link rel="stylesheet" href="css/modif_emp.css">
+    <link rel="stylesheet" href="../Assets/css/modif_emp.css">
     
 </head>
 <body>
+<header>
+            <div class="logo">
+                <h1>
+                    <a href="lista-empleados.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
+                </h1>
+            </div>
+        </header>
     <div class="form-container">
         <h2>Modificar Empleado</h2>
         <form method="POST" action="">
