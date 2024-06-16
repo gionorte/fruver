@@ -1,7 +1,7 @@
 <?php
 // procesar_asignacion.php
 
-include("conexion.php");
+include("../includes/conexion.php");
 
 // Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
