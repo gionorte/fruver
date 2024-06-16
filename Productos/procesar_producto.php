@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: iniciosesion.php");
+    header("Location: ../inicio sesion/iniciosesion.php");
     exit();
 }
 
-include("conexion.php");
+include("../includes/conexion.php");
 
 $nom_product = $_POST['nom_product'];
 $cantidad = $_POST['cantidad'];

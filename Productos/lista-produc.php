@@ -2,11 +2,14 @@
 session_start();
 include("../includes/conexion.php");
 
+
+session_start();
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: iniciosesion.php");
+    header("Location: ../inicio sesion/iniciosesion.php");
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">

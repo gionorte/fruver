@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../conexion.php';
+include '../includes/conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir y limpiar los datos del formulario

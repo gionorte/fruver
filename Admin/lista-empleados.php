@@ -1,11 +1,10 @@
 <?php
 session_start();
-
-// Redirigir si el usuario no está autenticado
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: iniciosesion.php");
+    header("Location: ../inicio sesion/iniciosesion.php");
     exit();
 }
+
 
 include("../includes/conexion.php");
 

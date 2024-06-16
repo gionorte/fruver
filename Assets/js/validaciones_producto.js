@@ -1,74 +1,74 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector("form").addEventListener("submit", function(event) {
-        if (!validarFormulario()) {
-            event.preventDefault(); // Prevenir el envío del formulario si no es válido
-        }
-    });
+   // Validar Nombre del Producto
+   const nomProduct = document.getElementById('nom_product');
+   const nomProductError = document.getElementById('nom_product_error');
+   if (nomProduct.value.trim() === '') {
+       nomProductError.textContent = 'Ingrese el nombre del producto.';
+       isValid = false;
+   } else {
+       nomProductError.textContent = '';
+   }
 
-    function validarFormulario() {
-        var nomProduct = document.getElementById('nom_product').value;
-        var cantidad = document.getElementById('cantidad').value;
-        var fechaVenc = document.getElementById('fecha_venc').value;
-        var descripcion = document.getElementById('descripcion').value;
-        var idEstado = document.getElementById('id_estado').value;
-        var precio = document.getElementById('precio').value;
-        var imagen = document.getElementById('imagen').value;
+   // Validar Cantidad
+   const cantidad = document.getElementById('cantidad');
+   const cantidadError = document.getElementById('cantidad_error');
+   if (cantidad.value.trim() === '') {
+       cantidadError.textContent = 'Ingrese la cantidad del producto.';
+       isValid = false;
+   } else {
+       cantidadError.textContent = '';
+   }
 
-        // Validar que los campos no estén vacíos
-        if (nomProduct === "") {
-            alert("El nombre del producto es obligatorio");
-            return false;
-        }
+   // Validar Fecha de Vencimiento
+   const fechaVenc = document.getElementById('fecha_venc');
+   const fechaVencError = document.getElementById('fecha_venc_error');
+   if (fechaVenc.value.trim() === '') {
+       fechaVencError.textContent = 'Ingrese la fecha de vencimiento del producto.';
+       isValid = false;
+   } else {
+       fechaVencError.textContent = '';
+   }
 
-        // Validar que la cantidad sea mayor a 0
-        if (cantidad <= 0) {
-            alert("La cantidad debe ser mayor a 0");
-            return false;
-        }
+   // Validar Descripción
+   const descripcion = document.getElementById('descripcion');
+   const descripcionError = document.getElementById('descripcion_error');
+   if (descripcion.value.trim() === '') {
+       descripcionError.textContent = 'Ingrese la descripción del producto.';
+       isValid = false;
+   } else {
+       descripcionError.textContent = '';
+   }
 
-        // Validar que la fecha de vencimiento sea futura
-        var fechaActual = new Date().toISOString().split('T')[0]; // Fecha actual en formato yyyy-mm-dd
-        if (fechaVenc <= fechaActual) {
-            alert("La fecha de vencimiento debe ser una fecha futura");
-            return false;
-        }
+   // Validar Estado
+   const idEstado = document.getElementById('id_estado');
+   const idEstadoError = document.getElementById('id_estado_error');
+   if (idEstado.value === '') {
+       idEstadoError.textContent = 'Seleccione el estado del producto.';
+       isValid = false;
+   } else {
+       idEstadoError.textContent = '';
+   }
 
-        // Validar que la descripción no esté vacía
-        if (descripcion === "") {
-            alert("La descripción es obligatoria");
-            return false;
-        }
+   // Validar Precio
+   const precio = document.getElementById('precio');
+   const precioError = document.getElementById('precio_error');
+   if (precio.value.trim() === '') {
+       precioError.textContent = 'Ingrese el precio del producto.';
+       isValid = false;
+   } else {
+       precioError.textContent = '';
+   }
 
-        // Validar que se haya seleccionado un estado
-        if (idEstado === "") {
-            alert("El estado es obligatorio");
-            return false;
-        }
+   // Validar Imagen
+   const imagen = document.getElementById('imagen');
+   const imagenError = document.getElementById('imagen_error');
+   if (imagen.value.trim() === '') {
+       imagenError.textContent = 'Seleccione una imagen para el producto.';
+       isValid = false;
+   } else {
+       imagenError.textContent = '';
+   }
 
-        // Validar que el precio sea mayor a 0
-        if (precio <= 0) {
-            alert("El precio debe ser mayor a 0");
-            return false;
-        }
+   if (!isValid) {
+       event.preventDefault();
+   }
 
-        // Validar que se haya seleccionado una imagen y que sea un archivo de imagen válido
-        if (imagen === "") {
-            alert("La imagen del producto es obligatoria");
-            return false;
-        }
-
-        // Si todas las validaciones pasan, mostrar mensaje de éxito
-        mostrarMensajeExito();
-        return true;
-    }
-
-    function mostrarMensajeExito() {
-        var mensajeExito = document.createElement('div');
-        mensajeExito.textContent = "Registro exitoso";
-        mensajeExito.classList.add('mensaje-exito');
-        document.body.appendChild(mensajeExito);
-        setTimeout(function() {
-            mensajeExito.style.display = 'none';
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
-});

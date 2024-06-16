@@ -46,6 +46,19 @@ $conn->close();
     <title>Carrito de Compras</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <h1>Carrito de Compras</h1>
@@ -86,5 +99,44 @@ $conn->close();
         </form>
         <button onclick="vaciarCarrito()">Vaciar Carrito</button>
     <?php } ?>
+
+    <script>
+        function actualizarCantidad(idProducto, cantidad) {
+            $.ajax({
+                url: 'actualizar_cantidad_carrito.php',
+                type: 'GET',
+                data: { id: idProducto, cantidad: cantidad },
+                success: function(response) {
+                    let data = JSON.parse(response);
+                    if (data.status === 'success') {
+                        location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                }
+            });
+        }
+
+        function eliminarDelCarrito(idProducto) {
+            $.ajax({
+                url: 'actualizar_cantidad_carrito.php',
+                type: 'GET',
+                data: { id: idProducto, cantidad: 0 },
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        }
+
+        function vaciarCarrito() {
+            $.ajax({
+                url: 'vaciar_carrito.php',
+                type: 'POST',
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        }
+    </script>
 </body>
 </html>

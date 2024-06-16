@@ -1,7 +1,8 @@
+
 <?php
 session_start();
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: iniciosesion.php");
+    header("Location: ../inicio sesion/iniciosesion.php");
     exit();
 }
 ?>
@@ -15,6 +16,12 @@ if (!isset($_SESSION['Id_Cargo'])) {
     <link rel="stylesheet" href="../Assets/css/regis_per.css">
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,11 +39,12 @@ if (!isset($_SESSION['Id_Cargo'])) {
                 <div class="form-group">
                     <label for="num_doc">Número de Documento: *</label>
                     <input type="text" id="num_doc" name="num_doc" placeholder="Ingrese su número de documento">
+                    <div id="num_doc_error" class="error-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="tipo_doc">Tipo de Documento: *</label>
                     <select id="tipo_doc" name="tipo_doc">
-                    <option value="" disabled selected hidden>Seleccione el tipo de documento</option>
+                        <option value="" disabled selected hidden>Seleccione el tipo de documento</option>
                         <?php
                         include("../includes/conexion.php");
                         $sql_tipo_documento = "SELECT * FROM tipo_documento";
@@ -46,10 +54,12 @@ if (!isset($_SESSION['Id_Cargo'])) {
                         }
                         ?>
                     </select>
+                    <div id="tipo_doc_error" class="error-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="prim_nombre">Primer Nombre: *</label>
                     <input type="text" id="prim_nombre" name="prim_nombre" placeholder="Ingrese su primer nombre">
+                    <div id="prim_nombre_error" class="error-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="seg_nombre">Segundo Nombre:</label>
@@ -58,6 +68,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
                 <div class="form-group">
                     <label for="prim_apellido">Primer Apellido: *</label>
                     <input type="text" id="prim_apellido" name="prim_apellido" placeholder="Ingrese su primer apellido">
+                    <div id="prim_apellido_error" class="error-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="seg_apellido">Segundo Apellido:</label>
@@ -78,25 +89,28 @@ if (!isset($_SESSION['Id_Cargo'])) {
                 <div class="form-group">
                     <label for="telefono">Teléfono: *</label>
                     <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono">
+                    <div id="telefono_error" class="error-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo Electrónico: *</label>
                     <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico">
+                    <div id="correo_error" class="error-message"></div>
                 </div>
                 <div class="form-group password-container">
                     <label for="contrasena">Contraseña: *</label>
                     <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña">
                     <i class="fa fa-eye eye-icon" id="eye-icon" onclick="togglePassword()"></i>
+                    <div id="contrasena_error" class="error-message"></div>
                 </div>
-  
                 <div class="form-group">
                     <label for="salario">Salario: *</label>
                     <input type="number" id="salario" name="salario" step="0.01" placeholder="Ingrese su salario">
+                    <div id="salario_error" class="error-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="id_cargo">Cargo: *</label>
-                    <select id="id_cargo" name="id_cargo" >
-                        <option value="" selected disabled>Seleccione un cargo</option> <!-- Placeholder -->
+                    <select id="id_cargo" name="id_cargo">
+                        <option value="" selected disabled>Seleccione un cargo</option>
                         <?php
                         $sql_cargo = "SELECT * FROM cargo";
                         $result_cargo = $conn->query($sql_cargo);
@@ -105,8 +119,8 @@ if (!isset($_SESSION['Id_Cargo'])) {
                         }
                         ?>
                     </select>
+                    <div id="id_cargo_error" class="error-message"></div>
                 </div>
-
                 <input type="submit" value="Registrar">
             </form>
         </div>
@@ -127,7 +141,8 @@ if (!isset($_SESSION['Id_Cargo'])) {
         }
     </script>
     <script src="../Assets/js/registro_exitoso.js"></script>
-    <script src="../Assets/js/validacion-res-per.js"></script>
+    <script src="../Assets/js/validacion_regis_per.js"></script>
+    
 </body>
 
 </html>

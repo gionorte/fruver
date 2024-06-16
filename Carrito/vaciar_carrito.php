@@ -1,6 +1,9 @@
-
 <?php
 session_start();
-$_SESSION['carrito'] = [];
+
+if (isset($_SESSION['carrito'])) {
+    unset($_SESSION['carrito']);
+}
+
 echo json_encode(['status' => 'success']);
 ?>

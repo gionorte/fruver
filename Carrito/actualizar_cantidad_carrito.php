@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../conexion.php';
+include '../includes/conexion.php';
+
 
 if (isset($_GET['id']) && isset($_GET['cantidad'])) {
     $id_producto = intval($_GET['id']);
