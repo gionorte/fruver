@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión a la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 // Verificar si la conexión se ha establecido correctamente
 if ($conn === false) {
@@ -8,7 +8,8 @@ if ($conn === false) {
 }
 
 // Realizar la consulta SQL para obtener los datos del inventario
-$sql = "SELECT * FROM inventario WHERE cantidad > 0"; // Asegurarse de que solo se seleccionen productos disponibles
+$sql = "SELECT * FROM inventario WHERE cantidad > 0";
+ // Asegurarse de que solo se seleccionen productos disponibles
 $result = $conn->query($sql);
 
 // Verificar si la consulta fue exitosa
@@ -26,8 +27,8 @@ $productos_disponibles = $result->num_rows > 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut - Gestión de Inventario</title>
-    <link rel="stylesheet" href="css/lis_invent.css"> 
-    <link href="img/icono.png" rel="icon">
+    <link rel="stylesheet" href="../Assets/css/lis_invent.css"> 
+    <link href="../Assets/img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>
@@ -36,7 +37,7 @@ $productos_disponibles = $result->num_rows > 0;
         <header>
             <div class="logo">
                 <h1>
-                    <a href="admin.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a>
+                    <a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
                 </h1>
             </div>
         </header>
@@ -135,7 +136,7 @@ $productos_disponibles = $result->num_rows > 0;
             var doc = new jsPDF('p', 'pt', 'a4');
             // Agregar el logo al documento PDF
             var img = new Image();
-            img.src = 'img/icono.png'; // Ruta del logo
+            img.src = '../Assets/img/icono.png'; // Ruta del logo
             doc.addImage(img, 'PNG', 40, 20, 70, 70); // Posición y tamaño del logo
 
             // Agregar la tabla al documento PDF

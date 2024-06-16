@@ -5,7 +5,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
     exit();
 }
 
-include("conexion.php");
+include("../includes/conexion.php");
 
 // Recibir datos del formulario
 $num_doc = $_POST['num_doc'];
@@ -41,8 +41,8 @@ if ($row_verif_num_doc['num_rows'] > 0) {
     $salario = $_POST['salario'];
 
     // Consulta SQL para insertar los datos en la tabla persona
-    $sql_insert_persona = "INSERT INTO persona (Num_Doc, Tipo_Doc, Prim_Nombre, Seg_Nombre, Prim_Apellido, Seg_Apellido, Genero, Telefono, Correo, Contrasena) 
-                   VALUES ('$num_doc', '$tipo_doc', '$prim_nombre', '$seg_nombre', '$prim_apellido', '$seg_apellido', '$genero', '$telefono', '$correo', '$contrasena')";
+    $sql_insert_persona = "INSERT INTO persona (Num_Doc, Tipo_Doc, Prim_Nombre, Seg_Nombre, Prim_Apellido, Seg_Apellido, Genero, Telefono, Correo, Contrasena, Id_Cargo) 
+                   VALUES ('$num_doc', '$tipo_doc', '$prim_nombre', '$seg_nombre', '$prim_apellido', '$seg_apellido', '$genero', '$telefono', '$correo', '$contrasena', '$id_cargo')";
 
     if ($conn->query($sql_insert_persona) === TRUE) {
         $id_empleado = $conn->insert_id; // Get the last inserted id for the persona

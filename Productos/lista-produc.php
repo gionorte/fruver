@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("../includes/conexion.php");
 
 if (!isset($_SESSION['Id_Cargo'])) {
     header("Location: iniciosesion.php");
@@ -14,8 +14,8 @@ if (!isset($_SESSION['Id_Cargo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut - Gestión de Productos</title>
-    <link rel="stylesheet" href="css/list-prod.css">
-    <link href="img/icono.png" rel="icon">
+    <link rel="stylesheet" href="../Assets/css/list-prod.css">
+    <link href="../Assets/img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
@@ -25,7 +25,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
         <header>
             <div class="logo">
                 <h1>
-                    <a href="admin.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a>
+                    <a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
                 </h1>
             </div>
         </header>
@@ -56,9 +56,9 @@ if (!isset($_SESSION['Id_Cargo'])) {
                         echo "<td>" . $row['Cantidad'] . "</td>";
                         echo "<td>" . $row['Fecha_Venc'] . "</td>";
                         echo "<td>" . $row['Descripcion'] . "</td>";
-                        echo "<td>" . $row['Id_Estado'] . "</td>";
+                        echo "<td>" . $row['Estado'] . "</td>";
                         echo "<td>" . $row['Precio'] . "</td>";
-                        echo "<td><img src='uploads/" . $row['imagen'] . "' alt='imagen_producto' style='width: 100px;'></td>";
+                        echo "<td><img src='../uploads/" . $row['Imagen'] . "' alt='imagen_producto' style='width: 100px;'></td>";
                         echo "<td>
                                 <button onclick=\"editProduct('" . $row['Id_Producto'] . "')\">Editar</button> <br><br>
                                 <button onclick=\"deleteProduct('" . $row['Id_Producto'] . "')\">Eliminar</button>

@@ -6,48 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut</title>
     <link href="img/icon-p.png" rel="icon">
-    <link rel="stylesheet" href="css/inter-in.css">
+    <link rel="stylesheet" href="Assets/css/inter-in.css">
 </head>
 
 <body>
     <main id="hero">
-        <header>
-            <div class="header-container">
-                <div class="logo">
-                    <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
-                </div>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1 class="logo"><a href="inter-inicio.php"><img src="Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>
             </div>
-            <div>
-                    <h2 class="eri">INZUFRUT</h2>
-                </div>
-            <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="btn-get-started scrollto" href="inter-inicio.php">Inicio</a></li>
-                    <li><a class="btn-get-started scrollto" href="carrito/tienda.php">Productos</a></li>
-                    <li><a class="btn-get-started scrollto" href="contactanos.php">Contactanos</a></li>
-                    <li><a class="btn-get-started scrollto" href="registro_cliente.php">Registrate</a></li>
-                </ul>
-                <div class="cart-icon" onclick="toggleCart()">
-                    <img src="img/cart.png" alt="Cart Icon">
-                    <span class="cart-count" id="cart-count">0</span>
-                </div>
-                <div class="profile-icon" onclick="toggleProfile()">
-                    <img src="img/usuario.png" alt="Profile Icon">
-                </div>
-            </nav>
-            <button class="hamburger" onclick="toggleMenu()">☰</button>
-        </header>
+        </div>
+        <div>
+            <h2 class="eri">INZUFRUT</h2>
+        </div>
+        <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="btn-get-started scrollto" href="inter-inicio.php">Inicio</a></li>
+                <li><a class="btn-get-started scrollto" href="carrito/tienda.php">Productos</a></li>
+                <li><a class="btn-get-started scrollto" href="Contactanos/contactanos.php">Contactanos</a></li>
+                <li><a class="btn-get-started scrollto" href="cliente/registro_cliente.php">Registrate</a></li>
+            </ul>
 
-        <video autoplay muted loop>
-            <source src="videos/ini-inter.mp4" type="video/mp4">
+            <div class="profile-icon" onclick="toggleProfile()">
+                <img src="Assets/img/usuario.png" alt="Profile Icon">
+            </div>
+        </nav>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </header>
+
+       <video autoplay muted loop>
+            <source src="Assets/videos/ini-inter.mp4" type="video/mp4">
         </video>
 
         <section>
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
                 <h1>BIENVENIDO A INZUFRUT</h1>
                 <h2>Si eres parte de esta familia inicia sesion</h2>
-                <a href="iniciosesion.php" class="btn-get-started scrollto">INCIAR SESION</a>
+                <a href="inicio sesion/iniciosesion.php" class="btn-get-started scrollto">INCIAR SESION</a>
             </div>
         </section>
     </main>
@@ -56,21 +53,21 @@
 
     <section class="produc-vista">
         <div class="product">
-            <img src="img/manzana.jpg" alt="Manzana">
+            <img src="Assets/img/manzana.jpg" alt="Manzana">
             <h3>Manzana</h3>
             <p>La manzana es una fruta deliciosa y nutritiva, rica en fibra y antioxidantes.</p>
             <p><strong>Precio:</strong> $5.000 k</p>
             <button class="add-to-cart" data-product="Manzana" data-price="5000">Agregar al Carrito</button>
         </div>
         <div class="product">
-            <img src="img/naranja.jpg" alt="Naranja">
+            <img src="Assets/img/naranja.jpg" alt="Naranja">
             <h3>Naranja</h3>
             <p>La naranja es una excelente fuente de vitamina C y es perfecta para preparar jugos frescos.</p>
             <p><strong>Precio:</strong> $4.000 k</p>
             <button class="add-to-cart" data-product="Naranja" data-price="4000">Agregar al Carrito</button>
         </div>
         <div class="product">
-            <img src="img/uva.jpg" alt="Uva">
+            <img src="Assets/img/uva.jpg" alt="Uva">
             <h3>Uva</h3>
             <p>Las uvas son pequeñas bombas de energía, ideales para un refrigerio saludable o para acompañar postres.</p>
             <p><strong>Precio:</strong> $6.000 k</p>
@@ -119,12 +116,12 @@
         <a href="mailto:inzufruts.a.s@outlook.es" style="color: white;">inzufruts.a.s@outlook.es</a>
         <p>Tel: +57 320 778-5187</p>
         <div class="social-icons">
-            <a href="" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
-            <a href="" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
-            <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
+            <a href="" target="_blank"><img src="Assets/img/facebook.png" alt="Facebook"></a>
+            <a href="" target="_blank"><img src="Assets/img/instagram.png" alt="Instagram"></a>
+            <a href="" target="_blank"><img src="Assets/img/twitter.png" alt="Twitter"></a>
         </div>
         <div class="logo-ft">
-            <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
+            <h1 class="logo"><a href="inter-inicio.php"><img src="Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>
         </div>
         <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
     </footer>

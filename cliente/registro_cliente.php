@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut - Registro</title>
-    <link rel="stylesheet" href="css/regis_per.css">
-    <link href="img/icono.png" rel="icon">
+    <link rel="stylesheet" href="../Assets/css/regis_per.css">
+    <link href="../Assets/img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
         <div class="capa"></div>
         <header>
             <div class="logo">
-                <h1><a href="inter-inicio.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a></h1>
+                <h1><a href="../inter-inicio.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a></h1>
             </div>
         </header>
         <div class="form-container inicio">
@@ -22,13 +22,14 @@
             <form action="procesar_regis_clien.php" method="post">
                 <div class="form-group">
                     <label for="num_doc">Número de Documento: *</label>
-                    <input type="text" id="num_doc" name="num_doc" required>
+                    <input type="text" id="num_doc" name="num_doc" placeholder="Ingrese su número de documento" required>
                 </div>
                 <div class="form-group">
                     <label for="tipo_doc">Tipo de Documento: *</label>
                     <select id="tipo_doc" name="tipo_doc" required>
+                        <option value="" disabled selected hidden>Seleccione el tipo de documento</option>
                         <?php
-                        include("conexion.php");
+                        include("../includes/conexion.php");
                         $sql_tipo_documento = "SELECT * FROM tipo_documento";
                         $result_tipo_documento = $conn->query($sql_tipo_documento);
                         while($row_tipo_doc = $result_tipo_documento->fetch_assoc()) {
@@ -39,23 +40,24 @@
                 </div>
                 <div class="form-group">
                     <label for="prim_nombre">Primer Nombre: *</label>
-                    <input type="text" id="prim_nombre" name="prim_nombre" required>
+                    <input type="text" id="prim_nombre" name="prim_nombre" placeholder="Ingrese su primer nombre" required>
                 </div>
                 <div class="form-group">
                     <label for="seg_nombre">Segundo Nombre:</label>
-                    <input type="text" id="seg_nombre" name="seg_nombre">
+                    <input type="text" id="seg_nombre" name="seg_nombre" placeholder="Ingrese su segundo nombre si lo tiene">
                 </div>
                 <div class="form-group">
                     <label for="prim_apellido">Primer Apellido: *</label>
-                    <input type="text" id="prim_apellido" name="prim_apellido" required>
+                    <input type="text" id="prim_apellido" name="prim_apellido" placeholder="Ingrese su primer apellido" required>
                 </div>
                 <div class="form-group">
                     <label for="seg_apellido">Segundo Apellido:</label>
-                    <input type="text" id="seg_apellido" name="seg_apellido">
+                    <input type="text" id="seg_apellido" name="seg_apellido" placeholder="Ingrese su segundo apellido si lo tiene">
                 </div>
                 <div class="form-group">
                     <label for="genero">Género:</label>
                     <select id="genero" name="genero" required>
+                        <option value="" disabled selected hidden>Seleccione su género</option>
                         <?php
                         $sql_genero = "SELECT * FROM genero";
                         $result_genero = $conn->query($sql_genero);
@@ -67,24 +69,41 @@
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono: *</label>
-                    <input type="tel" id="telefono" name="telefono" required>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required>
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo Electrónico: *</label>
-                    <input type="email" id="correo" name="correo" required>
+                    <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
                 </div>
                 <div class="form-group password-container">
                     <label for="contrasena">Contraseña: *</label>
-                    <input type="password" id="contrasena" name="contrasena" required>
-                    <i class="fa fa-eye eye-icon" id="eye-icon"></i>
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
+                    <i class="fa fa-eye eye-icon" id="eye-icon" onclick="togglePassword()"></i>
                 </div>
+                <!-- Campo oculto para el id_cargo -->
                 <input type="hidden" id="id_cargo" name="id_cargo" value="3">
                 <input type="submit" value="Registrar">
-            </form><br>
-            <button onclick="window.location.href='inter-inicio.php'" class="btn-volver">Volver</button>
+            </form>
+            <br>
+            <button onclick="window.location.href='../inter-inicio.php'" class="btn-volver">Volver</button>
         </div>
     </main>
-    <script src="js/validacion-res-per.js"></script>
-    <script src="js/registro_exitoso.js"></script>
+    <script src="../Assets/js/validacion-res-per.js"></script>
+    <script src="../Assets/js/registro_exitoso.js"></script>
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById('contrasena');
+            var eyeIcon = document.getElementById('eye-icon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
 </body>
 </html>

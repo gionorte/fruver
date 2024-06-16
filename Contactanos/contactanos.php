@@ -4,34 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosotros y Contacto</title>
-    <link rel="stylesheet" href="css/contactanos.css">
+    <link rel="stylesheet" href="../Assets/css/contactanos.css">
     <link href="img/icon-p.png" rel="icon">
+    <style>
+        .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+.navbar ul li {
+  margin-left: 20px;
+}
+.profile-container {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  display: none;
+}
+.profile-icon {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 20px; /* Ajusta el margen según sea necesario */
+}
+.profile-icon img {
+  width: 40px;
+}
+
+    </style>
 </head>
 <body>
     <main id="hero">
     <header>
         <div class="logo">
-            <h1 class="logo"><a href="inter-inicio.php"><img src=img/icono.png alt="icon" style="width: 60px;"></a></h1>      
+            <h1 class="logo"><a href="inter-inicio.php"><img src="../Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>      
         </div>
         <h2 class="eri">INZUFRUT</h2>
-        <div class="contact-info d-flex align-items-center">
-            
-            <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">inzufruts.a.s@outlook.es</a>
-            <br>
-            <i class="bi bi-phone-fill phone-icon"></i> <a href=""> +57 320 778 5187 </a>
-        </div>
-        <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
+     
         <nav id="navbar" class="navbar">
             <ul >
-                <li><a class="btn-get-started scrollto" href="inter-inicio.php" >Inicio</a></li>
-                <li><a class="btn-get-started scrollto" href="#">Productos</a></li>
+                <li><a class="btn-get-started scrollto" href="../inter-inicio.php" >Inicio</a></li>
+                <li><a class="btn-get-started scrollto" href="../Carrito/tienda.php">Productos</a></li>
                 <li><a class="btn-get-started scrollto" href="contactanos.php">contactanos</a></li>
-                <li><a class="btn-get-started scrollto" href="#">Registrate</a></li>
+                <li><a class="btn-get-started scrollto" href="../cliente/registro_cliente.php">Registrate</a></li>
             </ul>
+            <div class="profile-icon" onclick="toggleProfile()">
+                <img src="../Assets/img/usuario.png" alt="Profile Icon">
+            </div>
         </nav>
     </header>
 <video autoplay muted loop>
-            <source src="videos/ini-inter.mp4" type="video/mp4">
+            <source src="../Assets/videos/ini-inter.mp4" type="video/mp4">
         </video>
         <div class="capa"></div>
     <!-- ======= Nosotros Section ======= -->
@@ -46,16 +77,16 @@
             <div class="row">
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
                 <div class="member">
-                    <img src="img/perfil_foto.jpg" alt="">
+                    <img src="../Assets/img/perfil_foto.jpg" alt="">
                     <h4>Erik Armando Pabon</h4>
                     <span>CTO</span>
                     <p>Diseñador Web</p>
                     <div class="social">
-                        <a href="https://www.facebook.com/erik.pabon.31?mibextid=ZbWKwL" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
-                        <a href="https://www.instagram.com/tovarpabon2301?igsh=MTc2c216eWlhOHk2ZA==" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
-                        <a href="" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
-                        <a href="" target="_blank"><img src="img/youtube.png" alt="YouTube"></a>
-                    </div>
+                            <a href=""><i class="bi bi-twitter"></i></a>
+                            <a href="https://www.facebook.com/erik.pabon.31?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/tovarpabon2301?igsh=MTc2c216eWlhOHk2ZA=="><i class="bi bi-instagram"></i></a>
+                            <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
                 </div>
             </div>
 
@@ -119,7 +150,7 @@
                     <div class="info-box mb-4">
                         <i class="bx bx-envelope"></i>
                         <h3>Envíanos un correo electrónico</h3>
-                        <p>inzufrt@gmail.com</p>
+                        <p>inzufruts.a.s@outlook.es</p>
                     </div>
                 </div>
 
@@ -217,7 +248,7 @@ $(document).ready(function() {
                                 Localidad de Chapinero, Bogotá<br>
                                 Colombia<br><br>
                                 <strong>Celular:</strong> +57 320 778 5187<br>
-                                <strong>Email:</strong> inzufrt@gmail.com<br>
+                                <strong>Email: <a href="mailto:inzufruts.a.s@outlook.es" style="color: white;">inzufruts.a.s@outlook.es</a><br><br>
                             </p>
                             <div class="social-links mt-3">
                                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -265,7 +296,17 @@ $(document).ready(function() {
     <div id="preloader"></div>
 
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.querySelector(".hamburger");
+    const navbarMenu = document.querySelector(".navbar ul");
 
+    hamburger.addEventListener("click", function() {
+        navbarMenu.classList.toggle("show-menu");
+    });
+});
+
+</script>
 
 </body>
 </html>

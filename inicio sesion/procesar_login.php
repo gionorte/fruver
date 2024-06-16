@@ -1,6 +1,6 @@
 <?php
 // Configuración de la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 // Variable para almacenar mensajes de error
 $error = "";
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Redirigir según el rol del usuario
                     switch ($row['Id_Cargo']) {
                         case 1:
-                            header("Location: admin.php"); // Redirigir a la página de administrador
+                            header("Location: ../Admin/admin.php"); // Redirigir a la página de administrador
                             break;
                         case 2:
                             header("Location: empleado.php"); // Redirigir a la página de empleado

@@ -7,7 +7,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
     exit();
 }
 
-include("conexion.php");
+include("../includes/conexion.php");
 
 // Consulta SQL para obtener los registros de la base de datos
 $sql = "SELECT * FROM persona";
@@ -20,7 +20,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut - Gestión de Registros</title>
-    <link rel="stylesheet" href="css/lista_em.css">
+    <link rel="stylesheet" href="../Assets/css/lista_em.css">
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -30,7 +30,7 @@ $result = $conn->query($sql);
         <header>
             <div class="logo">
                 <h1>
-                    <a href="admin.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a>
+                    <a href="admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
                 </h1>
             </div>
         </header>
