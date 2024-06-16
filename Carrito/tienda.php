@@ -16,7 +16,7 @@ $cantidadProductosCarrito = count($carrito);
 <head>
   <meta charset="UTF-8">
   <title>Tienda en Línea</title>
-  <link href="img/icon-p.png" rel="icon">
+  <link href="../Assets/img/icono.png" rel="icon">
   <style>
     body,
     html {
@@ -569,7 +569,7 @@ $cantidadProductosCarrito = count($carrito);
     <header>
       <div class="header-container">
         <div class="logo">
-          <h1 class="logo"><a href="inter-inicio.php"><img src="../Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>
+          <h1 class="logo"><a href="../inter-inicio.php"><img src="../Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>
         </div>
 
       </div>
