@@ -42,7 +42,7 @@
         </video>
         <div class="capa"></div>
     </main>
-    <script src="../Assets/Js/validar_iniciosesion.js"></script>
+    <script src="../Assets/js/validar_iniciosesion.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const eyeIcon = document.getElementById('eye-icon');
