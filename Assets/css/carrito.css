@@ -1,0 +1,116 @@
+/* Reset de estilos para consistencia en todos los navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Estilo del encabezado */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background-color: #ff8c00;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #ff8c00;
+}
+
+/* Estilo del formulario */
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo del mensaje de carrito vacío */
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Estilo del mensaje de alerta de carrito vacío */
+#emptyCartAlert {
+    display: none;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Estilo del botón Seguir comprando */
+#continueShoppingButton {
+    background-color: #ff8c00;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+#continueShoppingButton:hover {
+    background-color: #ff8c00;
+}
