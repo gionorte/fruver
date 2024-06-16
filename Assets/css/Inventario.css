@@ -58,10 +58,11 @@ header {
 .form-group input,
 .form-group textarea,
 .form-group select {
-    width: calc(100% - 20px);
-    padding: 8px 1  px;
+    width: calc(100% - 22px); /* Ajustamos el ancho restando 22px para dar espacio */
+    padding: 10px; /* Aumentamos el padding para agrandar el área de entrada y texto */
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 16px; /* Tamaño de fuente ajustado */
 }
 
 textarea {
@@ -88,4 +89,3 @@ button[type="submit"]:hover {
     font-size: 0.9em;
     margin-top: 5px;
 }
-
