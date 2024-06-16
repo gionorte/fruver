@@ -23,10 +23,10 @@
             <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="btn-get-started scrollto" href="inter-inicio.php">Inicio</a></li>
+                    <li><a class="btn-get-started scrollto" href="update_cliente.php">Actualizar Datos</a></li>                    
+                    <li><a class="btn-get-started scrollto" href="delete_cliente.php">Eliminar Información</a></li>
+                    <li><a class="btn-get-started scrollto" href="get_cliente.php">Consulta tus datos</a></li>
                     <li><a class="btn-get-started scrollto" href="carrito/tienda.php">Productos</a></li>
-                    <li><a class="btn-get-started scrollto" href="contactanos.php">Contactanos</a></li>
-                    <li><a class="btn-get-started scrollto" href="registro_cliente.php">Registrate</a></li>
                 </ul>
                 <div class="cart-icon" onclick="toggleCart()">
                     <img src="img/cart.png" alt="Cart Icon">

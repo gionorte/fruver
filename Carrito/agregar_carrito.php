@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../conexion.php';
+include '../includes/conexion.php';
 
 if (isset($_GET['id'])) {
     $id_producto = $_GET['id'];
