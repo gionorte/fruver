@@ -66,35 +66,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <header>
             <div class="logo">
                 <h1>
-                    <a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
+                    <a href="lista-produc.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
                 </h1>
             </div>
         </header>
         <div class="form-container inicio">
             <h2>Modificar Producto</h2>
             <form action="modificar_producto.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
-                <label for="nombre">Nombre de Producto:</label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo $product['Nom_Product']; ?>" required>
-
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" value="<?php echo $product['Cantidad']; ?>" required>
-
-                <label for="fecha_venc">Fecha de Vencimiento:</label>
-                <input type="date" id="fecha_venc" name="fecha_venc" value="<?php echo $product['Fecha_Venc']; ?>" required>
-
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" required><?php echo $product['Descripcion']; ?></textarea>
-
-                <label for="estado">Estado:</label>
-                <input type="text" id="estado" name="estado" value="<?php echo $product['Estado']; ?>" required>
-
-                <label for="precio">Precio:</label>
-                <input type="number" step="0.01" id="precio" name="precio" value="<?php echo $product['Precio']; ?>" required>
-
-                <label for="imagen">Imagen:</label>
-                <input type="file" id="imagen" name="imagen">
-                <img src="../uploads/<?php echo $product['Imagen']; ?>" alt="imagen_producto" style="width: 100px;">
-
+                <div class="form-group">
+                    <label for="nombre">Nombre de Producto:</label>
+                    <input type="text" id="nombre" name="nombre" value="<?php echo $product['Nom_Product']; ?>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" value="<?php echo $product['Cantidad']; ?>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha_venc">Fecha de Vencimiento:</label>
+                    <input type="date" id="fecha_venc" name="fecha_venc" value="<?php echo $product['Fecha_Venc']; ?>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required><?php echo $product['Descripcion']; ?></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" name="estado" value="<?php echo $product['Estado']; ?>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" step="0.01" id="precio" name="precio" value="<?php echo $product['Precio']; ?>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" id="imagen" name="imagen">
+                    <img src="../uploads/<?php echo $product['Imagen']; ?>" alt="imagen_producto" style="width: 100px;">
+                </div>
+                
                 <button type="submit">Guardar Cambios</button>
             </form>
         </div>

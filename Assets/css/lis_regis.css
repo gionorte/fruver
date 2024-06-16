@@ -60,22 +60,24 @@ header {
 .form-group select {
     width: calc(100% - 20px);
     padding: 8px 10px;
+    margin: 0 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
 .form-group input[type="file"] {
     padding: 3px;
-    border: none; /* Remove border for file input */
+    border: none;
 }
 
 textarea {
     resize: vertical;
 }
 
-input[type="submit"] {
-    width: 100%;
+button[type="submit"] {
+    width: calc(100% - 20px);
     padding: 10px;
+    margin: 0 10px;
     background-color: #ffa500;
     color: #fff;
     border: none;
@@ -84,7 +86,7 @@ input[type="submit"] {
     font-size: 16px;
 }
 
-input[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: #ff8c00;
 }
 
@@ -99,7 +101,6 @@ input[type="submit"]:hover {
     display: none;
 }
 
-/* Additional styles for file input */
 .form-group input[type="file"]::file-selector-button {
     padding: 8px 16px;
     border: 1px solid #ddd;

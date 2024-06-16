@@ -44,7 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             header("Location: empleado.php"); // Redirigir a la página de empleado
                             break;
                         case 3:
+<<<<<<< HEAD
                             header("Location: ../inicio_cliente.php"); // Redirigir a la página de cliente
+=======
+                            header("Location: ../inter-inicio.php"); // Redirigir a la página de cliente
+>>>>>>> 6338af53f928b56e2998bd331b58f958764d8f89
                             break;
                         default:
                             $error = "Rol de usuario no reconocido.";

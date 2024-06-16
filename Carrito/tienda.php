@@ -198,7 +198,7 @@ $cantidadProductosCarrito = count($carrito);
     /* Header Styles */
     header {
       background-color: #fff;
-      padding: 20px;
+      padding: 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
