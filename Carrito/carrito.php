@@ -99,7 +99,7 @@ $conn->close();
         </table>
         <form action="orden_compra.php" method="post">
             <input type="hidden" name="total" value="<?php echo $totalCarrito; ?>">
-            <button type="submit">Pagar</button>
+            <button type="submit" href="../Carrito/procesar_orden">Pagar</button>
         </form>
         <button onclick="vaciarCarrito()">Vaciar Carrito</button> 
   
