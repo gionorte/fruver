@@ -67,7 +67,7 @@ $conn->close();
     <?php if (empty($productosCarrito)) { ?>
         <div id="emptyCartAlert" style="display: block;">
             <p>El carrito está vacío.</p>
-            <button id="continueShoppingButton" onclick="window.location.href='../inter-inicio.php'">Seguir comprando</button>
+            <button id="continueShoppingButton" onclick="window.location.href='../Carrito/tienda.php'">Seguir comprando</button>
         </div>
     <?php } else { ?>
         <table>
