@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("../includes/conexion.php");
 
 function handleDeleteRequest($conn) {
     $user_id = $_SESSION['user_id'];
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <div class="header-container">
             <div class="logo">
-                <h1 class="logo"><a href="inter-inicio.php"><img src="img/icono.png" alt="icon" style="width: 60px;"></a></h1>
+                <h1 class="logo"><a href="../inter-inicio.php"><img src="../Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>
             </div>
         </div>
         <div>
