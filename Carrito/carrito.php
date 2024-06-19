@@ -46,19 +46,7 @@ $conn->close();
     <title>Carrito de Compras</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
+   
 </head>
 <body>
     <h1>Carrito de Compras</h1>

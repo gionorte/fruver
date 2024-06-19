@@ -27,10 +27,33 @@
                 <label for="contrasena">Contraseña</label><br>
                 <input type="password" name="contrasena" id="contrasena"><br>
                 <i class="fa fa-eye eye-icon" id="eye-icon"></i>
-                <a href="#">Olvidaste la Contraseña</a>
+                <a href="../recuperar contraseña/recuperar_con_corr.php">Olvidaste la Contraseña</a>
                 <br>
                 <button type="submit">Ingresar</button>
             </form>
+            <?php 
+    if(isset($_GET['message'])){
+     
+    ?>
+      <div class="alert alert-primary" role="alert">
+        <?php 
+        switch ($_GET['message']) {
+          case 'ok':
+            echo 'Por favor, revisa tu correo';
+            break;
+          case 'success_password':
+            echo 'Inicia sesión con tu nueva contraseña';
+            break;
+            
+          default:
+            echo 'Algo salió mal, intenta de nuevo';
+            break;
+        }
+        ?>
+      </div>
+    <?php
+    }
+    ?>
             <?php
             if (!empty($error)) {
                 echo "<p style='color:red;'>$error</p>";

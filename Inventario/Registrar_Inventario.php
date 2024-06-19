@@ -11,8 +11,9 @@ if (!isset($_SESSION['Id_Cargo'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Registro de Inventarios</title>
+    <title>Registro de Inventarios</title>
     <link rel="stylesheet" href="../Assets/css/inventario.css">
+    <link href="../Assets/img/icono.png" rel="icon">
 </head>
 
 <body>
@@ -24,6 +25,9 @@ if (!isset($_SESSION['Id_Cargo'])) {
         </header>
         <div class="form-container inicio">
             <h2>Registro de Inventarios</h2>
+            <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
+                <p class="success-message">Registro exitoso</p>
+            <?php endif; ?>
             <form id="inventoryForm" action="Procesar_Inventario.php" method="POST">
                 <div class="form-group">
                     <label for="id_empleado">ID Empleado:</label>

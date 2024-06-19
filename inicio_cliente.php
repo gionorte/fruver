@@ -18,12 +18,12 @@
                 </div>
             </div>
             <div>
-                    <h2 class="eri">INZUFRUT</h2>
-                </div>
+                <h2 class="eri">INZUFRUT</h2>
+            </div>
             <i class="bi bi-list mobile-nav-toggle"></i> <!-- Icono de menú para dispositivos móviles -->
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="btn-get-started scrollto" href="update_cliente.php">Actualizar Datos</a></li>                    
+                    <li><a class="btn-get-started scrollto" href="update_cliente.php">Actualizar Datos</a></li>
                     <li><a class="btn-get-started scrollto" href="delete_cliente.php">Eliminar Información</a></li>
                     <li><a class="btn-get-started scrollto" href="get_cliente.php">Consulta tus datos</a></li>
                     <li><a class="btn-get-started scrollto" href="carrito/tienda.php">Productos</a></li>
@@ -54,37 +54,10 @@
 
     <h2 class="titulo">Nuestros productos</h2>
 
-    <section class="produc-vista">
-        <div class="product">
-            <img src="Assets/img/manzana.jpg" alt="Manzana">
-            <h3>Manzana</h3>
-            <p>La manzana es una fruta deliciosa y nutritiva, rica en fibra y antioxidantes.</p>
-            <p><strong>Precio:</strong> $5.000 k</p>
-            <button class="add-to-cart" data-product="Manzana" data-price="5000">Agregar al Carrito</button>
-        </div>
-        <div class="product">
-            <img src="Assets/img/naranja.jpg" alt="Naranja">
-            <h3>Naranja</h3>
-            <p>La naranja es una excelente fuente de vitamina C y es perfecta para preparar jugos frescos.</p>
-            <p><strong>Precio:</strong> $4.000 k</p>
-            <button class="add-to-cart" data-product="Naranja" data-price="4000">Agregar al Carrito</button>
-        </div>
-        <div class="product">
-            <img src="Assets/img/uva.jpg" alt="Uva">
-            <h3>Uva</h3>
-            <p>Las uvas son pequeñas bombas de energía, ideales para un refrigerio saludable o para acompañar postres.</p>
-            <p><strong>Precio:</strong> $6.000 k</p>
-            <button class="add-to-cart" data-product="Uva" data-price="6000">Agregar al Carrito</button>
-        </div>
-    </section>
+    <?php
+    include_once 'includes/header.php';
+    ?>
 
-    <div class="cart-container" id="cart-container">
-        <h2>Carrito de Compras</h2>
-        <div id="cart-items"></div>
-        <p class="cart-total">Total: $<span id="cart-total">0</span></p>
-        <button onclick="clearCart()">Vaciar Carrito</button>
-        <button onclick="checkout()">Realizar Compra</button>
-    </div>
 
     <div class="profile-container" id="profile-container">
         <h2>Perfil del Cliente</h2>
@@ -124,7 +97,7 @@
             <a href="" target="_blank"><img src="Assets/img/twitter.png" alt="Twitter"></a>
         </div>
         <div class="logo-ft">
-            <h1 class="logo"><a href="inter-inicio.php"><img src="Assets/   img/icono.png" alt="icon" style="width: 60px;"></a></h1>
+            <h1 class="logo"><a href="inter-inicio.php"><img src="Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>
         </div>
         <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
     </footer>
