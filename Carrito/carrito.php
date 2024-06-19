@@ -97,10 +97,11 @@ $conn->close();
                 <td></td>
             </tr>
         </table>
-        <form action="orden_compra.php" method="post">
+        <form id="paymentForm" action="../Carrito/verificar_autenticacion.php" method="post">
             <input type="hidden" name="total" value="<?php echo $totalCarrito; ?>">
-            <button type="submit" href="../Carrito/procesar_orden">Pagar</button>
+            <button type="submit">Pagar</button>
         </form>
+        
         <button onclick="vaciarCarrito()">Vaciar Carrito</button> 
   
     <?php } ?>
