@@ -48,7 +48,9 @@ html {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 300px;
   display: none;
+  z-index: 1000; /* Asegúrate de que este valor sea alto */
 }
+
 .cart-item {
   display: flex;
   justify-content: space-between;

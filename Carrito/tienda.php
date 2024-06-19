@@ -580,7 +580,7 @@ $cantidadProductosCarrito = count($carrito);
           <li><a class="btn-get-started scrollto" href="../inter-inicio.php">Inicio</a></li>
           <li><a class="btn-get-started scrollto" href="tienda.php">Productos</a></li>
           <li><a class="btn-get-started scrollto" href="../Contactanos/contactanos.php">Contactanos</a></li>
-          <li><a class="btn-get-started scrollto" href="registro_cliente.php">Registrate</a></li>
+          <li><a class="btn-get-started scrollto" href="../cliente/registro_cliente.php">Registrate</a></li>
         </ul>
         <div class="carrito-icono">
           <a href="carrito.php">

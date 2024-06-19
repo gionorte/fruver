@@ -1,11 +1,12 @@
 <?php
-// Incluir el archivo de conexión a la base de datos
+session_start();
 include("../includes/conexion.php");
 
-// Verificar si la conexión se ha establecido correctamente
-if ($conn === false) {
-    die("Error: No se pudo conectar a la base de datos.");
+if (!isset($_SESSION['Id_Cargo'])) {
+    header("Location: ../inicio sesion/iniciosesion.php");
+    exit();
 }
+<<<<<<< HEAD
 
 // Realizar la consulta SQL para obtener los datos del inventario
 $sql = "SELECT * FROM inventario WHERE cantidad > 0"; // Asegurarse de que solo se seleccionen productos disponibles
@@ -18,6 +19,8 @@ if ($result === false) {
 
 // Inicializar la variable para verificar si hay productos disponibles
 $productos_disponibles = $result->num_rows > 0;
+=======
+>>>>>>> cdf2cfa8573736228f9a15c07ea1a10a45139099
 ?>
 
 <!DOCTYPE html>
@@ -26,10 +29,11 @@ $productos_disponibles = $result->num_rows > 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzufrut - Gestión de Inventario</title>
-    <link rel="stylesheet" href="../Assets/css/lis_invent.css"> 
+    <link rel="stylesheet" href="../Assets/css/lis_invent.css">
     <link href="../Assets/img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 </head>
 <body>
     <main id="hero">
@@ -42,6 +46,7 @@ $productos_disponibles = $result->num_rows > 0;
         </header>
         <div class="form-container inicio">
             <h2>Gestión de Inventario</h2>
+<<<<<<< HEAD
             <?php if ($productos_disponibles): ?>
                 <table id="inventarioTabla" class="display">
                     <thead>
@@ -80,15 +85,60 @@ $productos_disponibles = $result->num_rows > 0;
             <?php else: ?>
                 <p>No hay productos disponibles en el inventario.</p>
             <?php endif; ?>
+=======
+            <table id="inventarioTabla" class="display">
+                <thead>
+                    <tr>
+                        <th>Id de Flujo</th>
+                        <th>Id de Empleado</th>
+                        <th>Nombre del Producto</th>
+                        <th>Lote</th>
+                        <th>Cantidad</th>
+                        <th>Id de Producto</th>
+                        <th>Id de Venta</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM inventario";
+                    $result = $conn->query($sql);
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['Id_FlujoInven'] . "</td>";
+                        echo "<td>" . $row['Id_Empleado'] . "</td>";
+                        echo "<td>" . $row['Nom_Product'] . "</td>";
+                        echo "<td>" . $row['Lote'] . "</td>";
+                        echo "<td>" . $row['Cantidad'] . "</td>";
+                        echo "<td>" . $row['Id_Producto'] . "</td>";
+                        echo "<td>" . $row['Id_Venta'] . "</td>";
+                        echo "<td>
+                                <button onclick=\"editInventory('" . $row['Id_FlujoInven'] . "')\">Editar</button> <br><br>
+                                <button onclick=\"deleteInventory('" . $row['Id_FlujoInven'] . "')\">Eliminar</button>
+                              </td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <button class="export" onclick="exportTableToExcel('inventarioTabla', 'inventario')">Exportar a Excel</button>
+            <button class="export" onclick="exportTableToPDF('inventarioTabla')">Exportar a PDF</button>
+>>>>>>> cdf2cfa8573736228f9a15c07ea1a10a45139099
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#inventarioTabla').DataTable({
+            var table = $('#inventarioTabla').DataTable({
                 language: {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontraron registros",
@@ -102,58 +152,33 @@ $productos_disponibles = $result->num_rows > 0;
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                }
+                },
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
             });
+
+            table.buttons().container().appendTo('#inventarioTabla_wrapper .col-md-6:eq(0)');
         });
 
-        function exportTableToExcel(tableID, filename = ''){
-            var downloadLink;
-            var dataType = 'application/vnd.ms-excel';
-            var tableSelect = document.getElementById(tableID);
-            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-            
-            filename = filename ? filename + '.xls' : 'excel_data.xls';
-            
-            downloadLink = document.createElement("a");
-            
-            document.body.appendChild(downloadLink);
-            
-            if (navigator.msSaveOrOpenBlob) {
-                var blob = new Blob(['\ufeff', tableHTML], {
-                    type: dataType
-                });
-                navigator.msSaveOrOpenBlob(blob, filename);
-            } else {
-                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-                downloadLink.download = filename;
-                downloadLink.click();
+        function editInventory(id) {
+            window.location.href = `modificar_inventario.php?id=${id}`;
+        }
+
+        function deleteInventory(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este inventario?')) {
+                window.location.href = `eliminar_inventario.php?id=${id}`;
             }
         }
 
+        function exportTableToExcel(tableID, filename = '') {
+            var table = $('#' + tableID).DataTable();
+            table.buttons('.buttons-excel').trigger();
+        }
+
         function exportTableToPDF(tableID) {
-            var { jsPDF } = window.jspdf;
-            var doc = new jsPDF('p', 'pt', 'a4');
-            // Agregar el logo al documento PDF
-            var img = new Image();
-            img.src = '../Assets/img/icono.png'; // Ruta del logo
-            doc.addImage(img, 'PNG', 40, 20, 70, 70); // Posición y tamaño del logo
-
-            // Agregar la tabla al documento PDF
-            doc.text("Inventario", 40, 120); // Título de la tabla
-            doc.autoTable({ html: '#' + tableID, startY: 140 }); // Inicio de la tabla
-
-            // Guardar el documento PDF
-            doc.save('inventario.pdf');
-        }
-
-        function editarRegistro(id) {
-            // Implementa la función de editar aquí
-            console.log("Editar registro con ID: " + id);
-        }
-
-        function eliminarRegistro(id) {
-            // Implementa la función de eliminar aquí
-            console.log("Eliminar registro con ID: " + id);
+            var table = $('#' + tableID).DataTable();
+            table.buttons('.buttons-pdf').trigger();
         }
     </script>
 </body>
