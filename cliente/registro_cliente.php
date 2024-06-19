@@ -100,6 +100,7 @@
             <br>
             <button onclick="window.location.href='../inter-inicio.php'" class="btn-volver">Volver</button>
         </div>
+        <div id="successMessage" class="success-message"></div>
     </main>
     <script>
         function validarFormulario() {
@@ -108,7 +109,9 @@
             // Resetear mensajes de error
             document.querySelectorAll('.error-message').forEach(function (el) {
                 el.textContent = '';
-            });
+            });            
+
+            document.getElementById('successMessage').textContent = '';
 
             // Validar cada campo
             const numDoc = document.getElementById('num_doc');
@@ -153,6 +156,11 @@
                 document.getElementById('errorContrasena').textContent = 'Ingrese su contraseña.';
                 isValid = false;
             }
+
+            if (isValid) {
+                document.getElementById('successMessage').textContent = 'El cliente ha sido registrado exitosamente.';
+                document.getElementById('successMessage').style.display = 'block';
+            }           
 
             return isValid;
         }

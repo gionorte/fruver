@@ -46,13 +46,33 @@ $conn->close();
     <title>Carrito de Compras</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
+<<<<<<< HEAD
    
+=======
+    <link rel="stylesheet" href="../Assets/css/carrito.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+>>>>>>> 636ef207e2205f7e5507ee252724c0eea681783a
 </head>
 <body>
     <h1>Carrito de Compras</h1>
 
     <?php if (empty($productosCarrito)) { ?>
-        <p>El carrito está vacío.</p>
+        <div id="emptyCartAlert" style="display: block;">
+            <p>El carrito está vacío.</p>
+            <button id="continueShoppingButton" onclick="window.location.href='../Carrito/tienda.php'">Seguir comprando</button>
+        </div>
     <?php } else { ?>
         <table>
             <tr>
@@ -83,9 +103,10 @@ $conn->close();
         </table>
         <form action="orden_compra.php" method="post">
             <input type="hidden" name="total" value="<?php echo $totalCarrito; ?>">
-            <button type="submit">Pagar</button>
+            <button type="submit" href="../Carrito/procesar_orden">Pagar</button>
         </form>
-        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button> 
+  
     <?php } ?>
 
     <script>

@@ -32,24 +32,9 @@
                     <img src="Assets/img/cart.png" alt="Cart Icon">
                     <span class="cart-count" id="cart-count">0</span>
                 </div>
-                <div class="profile-icon" onclick="toggleProfile()">
-                    <img src="Assets/img/usuario.png" alt="Profile Icon">
-                </div>
             </nav>
             <button class="hamburger" onclick="toggleMenu()">☰</button>
-        </header>
-
-        <!-- <video autoplay muted loop>
-            <source src="videos/ini-inter.mp4" type="video/mp4">
-        </video>
-
-        <section>
-            <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-                <h1>BIENVENIDO A INZUFRUT</h1>
-                <h2>Si eres parte de esta familia inicia sesion</h2>
-                <a href="iniciosesion.php" class="btn-get-started scrollto">INCIAR SESION</a>
-            </div>
-        </section> -->
+        </header>        
     </main>
 
     <h2 class="titulo">Nuestros productos</h2>
@@ -127,7 +112,7 @@
 
         async function fetchProfileData() {
             try {
-                const response = await fetch('get_cliente.php');
+                const response = await fetch('clinete/get_cliente.php');
                 const data = await response.json();
                 if (data.error) {
                     document.getElementById('profile-data').innerHTML = `<p>${data.error}</p>`;
@@ -149,6 +134,8 @@
             }
         }
 
+        fetchProfileData();
+
         function toggleProfile() {
             const profileContainer = document.getElementById('profile-container');
             profileContainer.style.display = profileContainer.style.display === 'block' ? 'none' : 'block';
@@ -164,7 +151,7 @@
             const formData = new FormData(form);
 
             try {
-                const response = await fetch('update_cliente.php', {
+                const response = await fetch('cliente/update_cliente.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -184,7 +171,7 @@
         async function deleteProfile() {
             if (confirm('¿Estás seguro de que deseas eliminar tu perfil?')) {
                 try {
-                    const response = await fetch('delete_cliente.php', {
+                    const response = await fetch('cliente/delete_cliente.php', {
                         method: 'POST'
                     });
                     const result = await response.json();
@@ -256,7 +243,12 @@
         function toggleCart() {
             const cartContainer = document.getElementById('cart-container');
             cartContainer.style.display = cartContainer.style.display === 'block' ? 'none' : 'block';
-        }
+            if (cartContainer.style.display === 'block') {
+                document.addEventListener('click', handleOutsideClick);
+            } else {
+                document.removeEventListener('click', handleOutsideClick);
+            }
+        }          
 
         function checkout() {
             alert('Función de compra no implementada.');
