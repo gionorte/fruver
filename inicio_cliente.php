@@ -34,13 +34,13 @@
                 </div>
             </nav>
             <button class="hamburger" onclick="toggleMenu()">☰</button>
-        </header>        
+        </header>
     </main>
 
     <h2 class="titulo">Nuestros productos</h2>
 
     <?php
-    include_once 'includes/header.php';
+    include_once 'includes/produc_tienda.php';
     ?>
 
 
@@ -248,7 +248,7 @@
             } else {
                 document.removeEventListener('click', handleOutsideClick);
             }
-        }          
+        }
 
         function checkout() {
             alert('Función de compra no implementada.');
