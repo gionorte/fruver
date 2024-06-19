@@ -46,6 +46,9 @@ $conn->close();
     <title>Carrito de Compras</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
+<<<<<<< HEAD
+   
+=======
     <link rel="stylesheet" href="../Assets/css/carrito.css">
     <style>
         table {
@@ -60,6 +63,7 @@ $conn->close();
             text-align: left;
         }
     </style>
+>>>>>>> 636ef207e2205f7e5507ee252724c0eea681783a
 </head>
 <body>
     <h1>Carrito de Compras</h1>
