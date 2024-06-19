@@ -8,8 +8,7 @@ if ($conn === false) {
 }
 
 // Realizar la consulta SQL para obtener los datos del inventario
-$sql = "SELECT * FROM inventario WHERE cantidad > 0";
- // Asegurarse de que solo se seleccionen productos disponibles
+$sql = "SELECT * FROM inventario WHERE cantidad > 0"; // Asegurarse de que solo se seleccionen productos disponibles
 $result = $conn->query($sql);
 
 // Verificar si la consulta fue exitosa
@@ -51,7 +50,7 @@ $productos_disponibles = $result->num_rows > 0;
                             <th>Id de Empleado</th>
                             <th>Nombre del Producto</th>
                             <th>Lote</th>
-                            <th>Id de Producto</th>
+                            <th>Id de Producto</th> 
                             <th>Id de Venta</th>
                             <th>Acciones</th>
                         </tr>
