@@ -24,7 +24,7 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="btn-get-started scrollto" href="inter-inicio.php">Inicio</a></li>
-                <li><a class="btn-get-started scrollto" href="carrito/tienda.php">Productos</a></li>
+                <li><a class="btn-get-started scrollto" href="Carrito/tienda.php">Productos</a></li>
                 <li><a class="btn-get-started scrollto" href="Contactanos/contactanos.php">Contactanos</a></li>
                 <li><a class="btn-get-started scrollto" href="cliente/registro_cliente.php">Registrate</a></li>
             </ul>
@@ -44,7 +44,7 @@
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
                 <h1>BIENVENIDO A INZUFRUT</h1>
                 <h2>Si eres parte de esta familia inicia sesion</h2>
-                <a href="inicio sesion/iniciosesion.php" class="btn-get-started scrollto">INCIAR SESION</a>
+                <a href="inicio_sesion/iniciosesion.php" class="btn-get-started scrollto">INCIAR SESION</a>
             </div>
         </section>
     </main>
@@ -57,40 +57,25 @@
             <h3>Manzana</h3>
             <p>La manzana es una fruta deliciosa y nutritiva, rica en fibra y antioxidantes.</p>
             <p><strong>Precio:</strong> $5.000 k</p>
-            <button class="add-to-cart" data-product="Manzana" data-price="5000">Agregar al Carrito</button>
+          
         </div>
         <div class="product">
             <img src="Assets/img/naranja.jpg" alt="Naranja">
             <h3>Naranja</h3>
             <p>La naranja es una excelente fuente de vitamina C y es perfecta para preparar jugos frescos.</p>
             <p><strong>Precio:</strong> $4.000 k</p>
-            <button class="add-to-cart" data-product="Naranja" data-price="4000">Agregar al Carrito</button>
+         
         </div>
         <div class="product">
             <img src="Assets/img/uva.jpg" alt="Uva">
             <h3>Uva</h3>
             <p>Las uvas son pequeñas bombas de energía, ideales para un refrigerio saludable o para acompañar postres.</p>
             <p><strong>Precio:</strong> $6.000 k</p>
-            <button class="add-to-cart" data-product="Uva" data-price="6000">Agregar al Carrito</button>
+           
         </div>
     </section>
 
-    <div class="cart-container" id="cart-container">
-        <h2>Carrito de Compras</h2>
-        <div id="cart-items"></div>
-        <p class="cart-total">Total: $<span id="cart-total">0</span></p>
-        <button onclick="clearCart()">Vaciar Carrito</button>
-        <button onclick="checkout()">Realizar Compra</button>
-    </div>
-
-    <div class="profile-container" id="profile-container">
-        <h2>Perfil del Cliente</h2>
-        <div id="profile-data">
-            <!-- Datos del cliente se insertarán aquí -->
-        </div>
-        <button onclick="editProfile()">Editar Perfil</button>
-        <button onclick="deleteProfile()">Eliminar Perfil</button>
-    </div>
+ 
 
     <div id="edit-profile-container" style="display:none;">
         <h2>Editar Perfil</h2>

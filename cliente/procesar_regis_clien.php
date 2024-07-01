@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $genero = isset($_POST['genero']) ? $_POST['genero'] : '';
     $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
     $correo = isset($_POST['correo']) ? $_POST['correo'] : '';
-    $contrasena = isset($_POST['contrasena']) ? password_hash($_POST['contrasena'], PASSWORD_BCRYPT) : '';
+    $contrasena = isset($_POST['contrasena']) ? $_POST['contrasena'] : '';
     $id_cargo = 3; // Valor fijo para clientes
 
     // Verificar si todos los campos requeridos están presentes
-    if (empty($num_doc) || empty($tipo_doc) || empty($prim_nombre) || empty($prim_apellido) || empty($genero) || empty($telefono) || empty($correo) || empty($contrasena)) {
+    if (empty($num_doc) || empty($tipo_doc) || empty($prim_nombre) || empty($prim_apellido) || empty($telefono) || empty($correo) || empty($contrasena)) {
         echo "Por favor completa todos los campos obligatorios.";
         exit();
     }

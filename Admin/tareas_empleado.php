@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: ../inicio sesion/iniciosesion.php");
+    header("Location: ../inicio_sesion/iniciosesion.php");
     exit();
 }
 
@@ -18,16 +18,31 @@ include("../includes/conexion.php");
     <link href="img/icono.png" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../Assets/css/list-prod.css">
 </head>
 <body>
     <main id="hero">
-        <header>
-            <div class="logo">
-                <h1>
-                    <a href="empleado.php"><img src="img/icono.png" alt="icono" style="width: 70px;"></a>
-                </h1>
-            </div>
-        </header>
+    <header>
+    <div class="logo">
+        <h1>
+            <?php
+
+            if (isset($_SESSION['Id_Cargo'])) {
+                if ($_SESSION['Id_Cargo'] == 1) {
+                    // Si es administrador, regresar a la página de administrador
+                    echo '<a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                } elseif ($_SESSION['Id_Cargo'] == 2) {
+                    // Si es empleado, regresar a la página de empleado
+                    echo '<a href="../Admin/empleado.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                }
+            } else {
+                // Si no hay sesión, redirigir a la página de inicio de sesión
+                echo '<a href="../inicio sesion/iniciosesion.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+            }
+            ?>
+        </h1>
+    </div>
+</header>
         <div class="form-container inicio">
             <h2>Gestión de Tareas</h2>
             <table id="productoTabla" class="display">

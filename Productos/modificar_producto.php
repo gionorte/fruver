@@ -3,7 +3,6 @@ session_start();
 include("../includes/conexion.php");
 
 
-session_start();
 if (!isset($_SESSION['Id_Cargo'])) {
     header("Location: ../inicio sesion/iniciosesion.php");
     exit();
@@ -47,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($stmt->execute()) {
-        header("Location: gestion_productos.php");
+        header("Location: lista-produc.php");
         exit();
     } else {
         echo "Error al actualizar el producto.";

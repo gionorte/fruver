@@ -12,17 +12,33 @@ if (!isset($_SESSION['Id_Cargo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Inventarios</title>
-    <link rel="stylesheet" href="../Assets/css/inventario.css">
+    <link rel="stylesheet" href="../Assets/css/Inventario.css">
     <link href="../Assets/img/icono.png" rel="icon">
 </head>
 
 <body>
     <main id="hero">
-        <header>
-            <div class="logo">
-                <h1 class="logo"><a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a></h1>
-            </div>
-        </header>
+    <header>
+    <div class="logo">
+        <h1>
+            <?php
+
+            if (isset($_SESSION['Id_Cargo'])) {
+                if ($_SESSION['Id_Cargo'] == 1) {
+                    // Si es administrador, regresar a la página de administrador
+                    echo '<a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                } elseif ($_SESSION['Id_Cargo'] == 2) {
+                    // Si es empleado, regresar a la página de empleado
+                    echo '<a href="../Admin/empleado.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                }
+            } else {
+                // Si no hay sesión, redirigir a la página de inicio de sesión
+                echo '<a href="../inicio sesion/iniciosesion.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+            }
+            ?>
+        </h1>
+    </div>
+</header>
         <div class="form-container inicio">
             <h2>Registro de Inventarios</h2>
             <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>

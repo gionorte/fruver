@@ -12,6 +12,10 @@
             color: red;
             font-size: 0.8em;
         }
+        .success-message {
+            color: green;
+            font-size: 0.8em;
+        }
     </style>
 </head>
 <body>
@@ -24,7 +28,12 @@
         </header>
         <div class="form-container inicio">
             <h2>Registro de Cliente</h2>
-            <div id="notificacion" style="display: none;">Registro exitoso</div>
+
+            <!-- Mostrar mensaje de éxito si existe -->
+            <?php if (isset($_GET['success']) && $_GET['success'] == 'true'): ?>
+                <div id="successMessage" class="success-message">Registro exitoso</div>
+            <?php endif; ?>
+
             <form id="registroForm" action="procesar_regis_clien.php" method="post" onsubmit="return validarFormulario()">
                 <div class="form-group">
                     <label for="num_doc">Número de Documento: *</label>
@@ -39,7 +48,7 @@
                         include("../includes/conexion.php");
                         $sql_tipo_documento = "SELECT * FROM tipo_documento";
                         $result_tipo_documento = $conn->query($sql_tipo_documento);
-                        while($row_tipo_doc = $result_tipo_documento->fetch_assoc()) {
+                        while ($row_tipo_doc = $result_tipo_documento->fetch_assoc()) {
                             echo "<option value='" . $row_tipo_doc['Tipo_Doc'] . "'>" . $row_tipo_doc['Tipo_Doc'] . "</option>";
                         }
                         ?>
@@ -71,7 +80,7 @@
                         <?php
                         $sql_genero = "SELECT * FROM genero";
                         $result_genero = $conn->query($sql_genero);
-                        while($row_genero = $result_genero->fetch_assoc()) {
+                        while ($row_genero = $result_genero->fetch_assoc()) {
                             echo "<option value='" . $row_genero['Genero'] . "'>" . $row_genero['Genero'] . "</option>";
                         }
                         ?>
@@ -100,7 +109,6 @@
             <br>
             <button onclick="window.location.href='../inter-inicio.php'" class="btn-volver">Volver</button>
         </div>
-        <div id="successMessage" class="success-message"></div>
     </main>
     <script>
         function validarFormulario() {
@@ -109,9 +117,7 @@
             // Resetear mensajes de error
             document.querySelectorAll('.error-message').forEach(function (el) {
                 el.textContent = '';
-            });            
-
-            document.getElementById('successMessage').textContent = '';
+            });
 
             // Validar cada campo
             const numDoc = document.getElementById('num_doc');
@@ -160,7 +166,7 @@
             if (isValid) {
                 document.getElementById('successMessage').textContent = 'El cliente ha sido registrado exitosamente.';
                 document.getElementById('successMessage').style.display = 'block';
-            }           
+            }
 
             return isValid;
         }
@@ -178,6 +184,17 @@
                 eyeIcon.classList.add('fa-eye');
             }
         }
+
+        // Ocultar mensaje de éxito después de 5 segundos y limpiar el formulario
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    document.getElementById('registroForm').reset();
+                }, 5000);
+            }
+        });
     </script>
 </body>
 </html>

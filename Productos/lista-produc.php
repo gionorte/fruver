@@ -2,13 +2,11 @@
 session_start();
 include("../includes/conexion.php");
 
-
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: ../inicio sesion/iniciosesion.php");
+    header("Location: ../inicio_sesion/iniciosesion.php");
     exit();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -27,10 +25,24 @@ if (!isset($_SESSION['Id_Cargo'])) {
         <header>
             <div class="logo">
                 <h1>
-                    <a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
+                    <?php
+                    if (isset($_SESSION['Id_Cargo'])) {
+                        if ($_SESSION['Id_Cargo'] == 1) {
+                            // Si es administrador, regresar a la página de administrador
+                            echo '<a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                        } elseif ($_SESSION['Id_Cargo'] == 2) {
+                            // Si es empleado, regresar a la página de empleado
+                            echo '<a href="../Admin/empleado.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                        }
+                    } else {
+                        // Si no hay sesión, redirigir a la página de inicio de sesión
+                        echo '<a href="../inicio sesion/iniciosesion.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                    }
+                    ?>
                 </h1>
             </div>
         </header>
+
         <div class="form-container inicio">
             <h2>Gestión de Productos</h2>
             <table id="productoTabla" class="display">
@@ -51,7 +63,7 @@ if (!isset($_SESSION['Id_Cargo'])) {
                     <?php
                     $sql = "SELECT * FROM productos";
                     $result = $conn->query($sql);
-                    while($row = $result->fetch_assoc()) {
+                    while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row['Id_Producto'] . "</td>";
                         echo "<td>" . $row['Nom_Product'] . "</td>";
@@ -70,10 +82,12 @@ if (!isset($_SESSION['Id_Cargo'])) {
                     ?>
                 </tbody>
             </table>
-            <button class="export" onclick="exportTableToExcel('productoTabla', 'productos')">Exportar a Excel</button>
-            <button class="export" onclick="exportTableToPDF('productoTabla')">Exportar a PDF</button>
+            <button class="export" onclick="location.href='exportar_excel.php';">Exportar a Excel</button>
+
+            <button class="export" onclick="location.href='exportar_pdf.php';">Exportar a Pdf</button>
         </div>
     </main>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -84,49 +98,32 @@ if (!isset($_SESSION['Id_Cargo'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+
+    <!-- Script personalizado para DataTables y funciones de exportación -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#productoTabla').DataTable({
                 language: {
-                    "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "No se encontraron registros",
-                    "info": "Mostrando página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay registros disponibles",
-                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                    "search": "Buscar:",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    }
+                    // Configuración de idioma para DataTables
                 },
                 buttons: [
-                    'copy', 'excel', 'pdf'
+                    'copy', 'excel', 'pdf' // Botones de exportación disponibles
                 ]
             });
 
-            table.buttons().container().appendTo( '#productoTabla_wrapper .col-md-6:eq(0)' );
+            // Añadir los botones al contenedor adecuado en el DataTable
+            table.buttons().container().appendTo('#productoTabla_wrapper .col-md-6:eq(0)');
         });
 
-        function editProduct(id) {
-            window.location.href = `modificar_producto.php?id=${id}`;
+        // Funciones adicionales si las necesitas, como editProduct y deleteProduct
+        function editProduct(productId) {
+            // Implementa la lógica para editar un producto
+            console.log('Editar producto con ID: ' + productId);
         }
 
-        function deleteProduct(id) {
-            if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-                window.location.href = `eliminar_producto.php?id=${id}`;
-            }
-        }
-
-        function exportTableToExcel(tableID, filename = '') {
-            var table = $('#productoTabla').DataTable();
-            table.buttons('.buttons-excel').trigger();
-        }
-
-        function exportTableToPDF(tableID) {
-            var table = $('#productoTabla').DataTable();
-            table.buttons('.buttons-pdf').trigger();
+        function deleteProduct(productId) {
+            // Implementa la lógica para eliminar un producto
+            console.log('Eliminar producto con ID: ' + productId);
         }
     </script>
 </body>

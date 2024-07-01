@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: ../inicio sesion/iniciosesion.php");
+    header("Location: ../inicio_sesion/iniciosesion.php");
     exit();
 }
 
@@ -16,7 +16,7 @@ $precio = $_POST['precio'];
 $imagen = $_FILES['imagen']['name'];
 
 // Validación y carga de la imagen
-$target_dir = "uploads/";
+$target_dir = "../uploads/";
 $target_file = $target_dir . basename($_FILES["imagen"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

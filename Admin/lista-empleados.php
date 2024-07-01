@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['Id_Cargo'])) {
-    header("Location: ../inicio sesion/iniciosesion.php");
+    header("Location: ../inicio_sesion/iniciosesion.php");
     exit();
 }
 
@@ -26,13 +26,27 @@ $result = $conn->query($sql);
 </head>
 <body>
     <main id="hero">
-        <header>
-            <div class="logo">
-                <h1>
-                    <a href="admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>
-                </h1>
-            </div>
-        </header>
+    <header>
+    <div class="logo">
+        <h1>
+            <?php
+
+            if (isset($_SESSION['Id_Cargo'])) {
+                if ($_SESSION['Id_Cargo'] == 1) {
+                    // Si es administrador, regresar a la página de administrador
+                    echo '<a href="../Admin/admin.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                } elseif ($_SESSION['Id_Cargo'] == 2) {
+                    // Si es empleado, regresar a la página de empleado
+                    echo '<a href="../Admin/empleado.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+                }
+            } else {
+                // Si no hay sesión, redirigir a la página de inicio de sesión
+                echo '<a href="../inicio sesion/iniciosesion.php"><img src="../Assets/img/icono.png" alt="icono" style="width: 70px;"></a>';
+            }
+            ?>
+        </h1>
+    </div>
+</header>
         <div class="form-container inicio">
             <h2>Gestión de Registros</h2>
             <table id="registroTabla" class="display">

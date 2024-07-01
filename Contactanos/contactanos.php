@@ -79,7 +79,7 @@
                 <div class="member">
                     <img src="../Assets/img/perfil_foto.jpg" alt="">
                     <h4>Erik Armando Pabon</h4>
-                    <span>CTO</span>
+                    <span>Scrum Master</span>
                     <p>Diseñador Web</p>
                     <div class="social">
                             <a href=""><i class="bi bi-twitter"></i></a>
@@ -93,9 +93,9 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
                     <div class="member">
-                        <img src="assets/img/team/erikpabon1.jpg" alt="">
+                        <img src="../Assets/img/libar.jpg" alt="">
                         <h4>Libardo Malaver Parra</h4>
-                        <span>CTO</span>
+                        <span>Product Owner</span>
                         <p>Diseñador Web</p>
                         <div class="social">
                             <a href=""><i class="bi bi-twitter"></i></a>
@@ -108,7 +108,7 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
                     <div class="member">
-                        <img src="assets/img/team/juliantinoco.jpg" alt="">
+                        <img src="../Assets/img/julian.jpg" alt="">
                         <h4>Julian David Tinoco</h4>
                         <span>Product Manager</span>
                         <p>Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus</p>
@@ -121,7 +121,20 @@
                     </div>
                 </div>
 
-              
+                      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+                    <div class="member">
+                        <img src="../Assets/img/.jpg" alt="">
+                        <h4>Giovanni Vargas Lugo</h4>
+                        <span>Product Owner</span>
+                        <p>Diseñador Web</p>
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

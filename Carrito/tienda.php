@@ -466,6 +466,24 @@ $cantidadProductosCarrito = count($carrito);
     .carrito-cantidad {
       transition: background 0.3s ease;
     }
+    footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.footer-info {
+  text-align: center;
+}
+
+.logo-ft {
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+}
+
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
@@ -605,6 +623,20 @@ $cantidadProductosCarrito = count($carrito);
       <?php } ?>
     </div>
   </main>
+  <footer>
+        <p>Dirección: Calle Ficticia #123, Ciudad Imaginaria</p>
+        <a href="mailto:inzufruts.a.s@outlook.es" style="color: white;">inzufruts.a.s@outlook.es</a>
+        <p>Tel: +57 320 778-5187</p>
+        <div class="social-icons">
+            <a href="" target="_blank"><img src="../Assets/img/facebook.png" alt="Facebook"></a>
+            <a href="" target="_blank"><img src="../Assets/img/instagram.png" alt="Instagram"></a>
+            <a href="" target="_blank"><img src="../Assets/img/twitter.png" alt="Twitter"></a>
+        </div>
+        <div class="logo-ft">
+            <h1 class="logo"><a href="../inter-inicio.php"><img src="../Assets/img/icono.png" alt="icon" style="width: 60px;"></a></h1>
+        </div>
+        <p>Todos los derechos reservados &copy; 2024 Inzufrut</p>
+    </footer>
 </body>
 
 </html>

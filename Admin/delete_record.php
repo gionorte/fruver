@@ -1,5 +1,5 @@
 <?php
-include('conexion.php');
+include('../includes/conexion.php');
 
 $num_doc = $_GET['num_doc'];
 
